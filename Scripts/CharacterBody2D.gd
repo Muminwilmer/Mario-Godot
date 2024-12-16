@@ -48,12 +48,11 @@ func handle_gravity(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		velocity.y = clamp(velocity.y, -INF, max_fall_speed)
-	print(position.y)
-	if position.y > 800:
-		reset_character()
+	if position.y > 700:
+		handle_death()
 
 # Movement logic
-func handle_movement(delta):
+func handle_movement(_delta):
 	is_running = Input.is_action_pressed("Run")
 	var max_speed = max_walk_speed if not is_running else max_run_speed
 	
@@ -111,3 +110,14 @@ func play_run_animation(flip_h: bool):
 		$AnimationPlayer.play("Run")
 	else:
 		$AnimationPlayer.stop()
+
+func handle_death():
+	Global.PlayerLives -= 1
+	if (Global.PlayerLives>0):
+		print("You died.")
+		print("You now only have "+str(Global.PlayerLives)+" lives left!")
+		reset_character()
+	else:
+		print("Game Over.")
+		#Crash the game on game over :P
+		print(Global.nonexistantvar)
