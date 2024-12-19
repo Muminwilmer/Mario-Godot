@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://daewpxl0pq2w5"]
 
-[ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="1_xvvq2"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_xvvq2"]
 [ext_resource type="Texture2D" uid="uid://boe17flysux2q" path="res://Assets/BigMarioSheet.png" id="2_2ahus"]
 [ext_resource type="AudioStream" uid="uid://b2bm2jtajo87u" path="res://Audio/Mario_Jump.mp3" id="3_ck26q"]
 

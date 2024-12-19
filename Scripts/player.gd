@@ -24,7 +24,7 @@ var current_speed = Vector2(0,0)
 var respawn_position = Vector2(0,0)
 
 @export var last_frame_pos = Vector2(0,0)
-@export var animation_speed = 8
+@export var animation_speed = 10
 
 
 # Initialization

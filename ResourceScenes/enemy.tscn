@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dynvjh6rwphvf"]
+
+[ext_resource type="Texture2D" uid="uid://boe17flysux2q" path="res://Assets/BigMarioSheet.png" id="1_7pcuc"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_ontdg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6nol"]
+size = Vector2(16, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffvhf"]
+size = Vector2(20, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7x0k"]
+size = Vector2(20, 23)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_ontdg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.578014, 0.189014, 0.406303, 1)
+texture = ExtResource("1_7pcuc")
+hframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_q6nol")
+
+[node name="Die" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Die"]
+modulate = Color(0.1155, 0.99, 0, 1)
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_ffvhf")
+
+[node name="Attack" type="Area2D" parent="."]
+position = Vector2(0, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+modulate = Color(1, 0, 0.0166664, 1)
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_e7x0k")
