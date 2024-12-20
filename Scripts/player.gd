@@ -7,7 +7,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var max_walk_speed = 150.0
 @export var max_run_speed = 300.0
 @export var max_fall_speed = 240.0
-@export var accel = 14.0
+@export var accel = 15.0
 @export var friction = 0.2
 @export var running_multiplier = 2.5
 
@@ -19,12 +19,13 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 # State variables
 var is_running = false
 var is_jumping = false
+var is_ducking = false
 var jump_hold_time = 0.0
 var current_speed = Vector2(0,0)
 var respawn_position = Vector2(0,0)
 
 @export var last_frame_pos = Vector2(0,0)
-@export var animation_speed = 10
+@export var animation_speed = 12
 
 
 # Initialization
@@ -69,14 +70,14 @@ func handle_movement(_delta):
 			play_run_animation(true)
 	else:
 		current_speed.x = lerp(current_speed.x, 0.0, friction)
+		print(abs(current_speed.x))
 		if is_on_floor():
 			$AnimationPlayer.stop()
-	
+			if abs(current_speed.x) < 1:
+				$Sprite2D.frame = 0
+			
 	velocity.x = current_speed.x
-	if (last_frame_pos == round(position * 10) / 10.0):
-		$Sprite2D.frame = 0
-	last_frame_pos = round(position * 10) / 10.0
-	
+	last_frame_pos = position
 
 # Jump logic
 func handle_jump(delta):
@@ -97,6 +98,10 @@ func handle_jump(delta):
 func handle_actions():
 	if Input.is_action_pressed("Duck"):
 		$Sprite2D.frame = 6
+		is_ducking = true
+	else:
+		is_ducking = false
+		
 	if Input.is_action_pressed("Reset"):
 		reset_character()
 
@@ -106,14 +111,15 @@ func play_run_animation(flip_h: bool):
 	if is_running:
 		animation_speed = 16
 	$AnimationPlayer.speed_scale = animation_speed
-	if (last_frame_pos != round(position * 10) / 10.0):
+	
+	if abs(current_speed.x) > 1 and not is_ducking and last_frame_pos.x != position.x:
 		$AnimationPlayer.play("Run")
 	else:
 		$AnimationPlayer.stop()
 
 func handle_death():
 	Global.PlayerLives -= 1
-	if (Global.PlayerLives>0):
+	if Global.PlayerLives>0:
 		print("You died.")
 		print("You now only have "+str(Global.PlayerLives)+" lives left!")
 		reset_character()
