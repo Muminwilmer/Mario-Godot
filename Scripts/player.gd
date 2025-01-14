@@ -70,7 +70,6 @@ func handle_movement(_delta):
 			play_run_animation(true)
 	else:
 		current_speed.x = lerp(current_speed.x, 0.0, friction)
-		print(abs(current_speed.x))
 		if is_on_floor():
 			$AnimationPlayer.stop()
 			if abs(current_speed.x) < 1:
@@ -125,5 +124,4 @@ func handle_death():
 		reset_character()
 	else:
 		print("Game Over.")
-		#Crash the game on game over :P
-		print(Global.nonexistantvar)
+		get_tree().exit()
