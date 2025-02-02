@@ -6,26 +6,33 @@ func _physics_process(_delta):
 	
 	# Update the camera position to snap when Mario crosses the 200-unit threshold.
 	
-	var cameraPosition = Vector2($Mario.position.x + 180, $Mario.respawn_position.y)
+	var cameraPosition = Vector2($Mario.position.x + 180, 512)
 	$Camera.position = cameraPosition
 
 func _ready():
 	var pipeLoad = load("res://ResourceScenes/pipes.tscn")
 	var vectorLists = [
-		{"position": Vector2(272, 500), "destination": Vector2(4010, 512)},
-		{"position": Vector2(3980, 512), "destination": Vector2(272, 440)},
-		{"position": Vector2(480, 512), "destination": Vector2(700, 300)}
+		{"position": Vector2(272, 500), "destination": Vector2(4010, 512), "rotation": 0}, # Goto 1st secret
+		{"position": Vector2(3976, 512), "destination": Vector2(272, 400), "rotation": 90}, # Goto back from 1st secret
+		{"position": Vector2(3288, 512), "destination": Vector2(-18, 416), "rotation": 90, "goto_level": "res://LevelScenes/level_2.tscn"}, # Goto lvl 2
+		{"position": Vector2(480, 512), "destination": Vector2(272, 400), "rotation": 90},
 	]
-	
+
 	# Iterate through vectorLists to instantiate pipes
 	for pipe_data in vectorLists:
 		var NewPipe = pipeLoad.instantiate()
 		
 		# Set the position of the pipe
 		NewPipe.position = pipe_data["position"]
+		NewPipe.rotation = deg_to_rad(pipe_data["rotation"])
 		
 		# Assign the destination as metadata or a property
 		NewPipe.destination = pipe_data["destination"]
 		
+		# Optionally assign the next level as metadata or a property
+		if "goto_level" in pipe_data:
+			NewPipe.set_meta("goto_level", pipe_data["goto_level"])
+		
 		# Add the pipe to the scene
 		add_child(NewPipe)
+

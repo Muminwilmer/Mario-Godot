@@ -20,6 +20,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_running = false
 var is_jumping = false
 var is_ducking = false
+var can_move = true
 var jump_hold_time = 0.0
 var current_speed = Vector2(0,0)
 var respawn_position = Vector2(0,0)
@@ -30,30 +31,38 @@ var respawn_position = Vector2(0,0)
 
 # Initialization
 func _ready():
+	if Global.player_spawn_position:
+		position = Global.player_spawn_position
+		Global.player_spawn_position = null
 	respawn_position = position
-
-# Reset character position
-func reset_character():
-	position = respawn_position
 
 # Main physics logic
 func _physics_process(delta):
+	check_for_death()
 	handle_gravity(delta)
 	handle_movement(delta)
 	handle_jump(delta)
 	handle_actions()
 	move_and_slide()
 
+func check_for_death():
+	if Global.kill_signal == true:
+		Global.kill_signal = false
+		handle_death()
+	if position.y > 700:
+		handle_death()
+
+
 # Gravity logic
 func handle_gravity(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		velocity.y = clamp(velocity.y, -INF, max_fall_speed)
-	if position.y > 700:
-		handle_death()
 
 # Movement logic
 func handle_movement(_delta):
+	if not can_move: 
+		return
 	is_running = Input.is_action_pressed("Run")
 	var max_speed = max_walk_speed if not is_running else max_run_speed
 	
@@ -61,13 +70,11 @@ func handle_movement(_delta):
 	if Input.is_action_pressed("Right"):
 		current_speed.x += accel * (2 if is_running else 1)
 		current_speed.x = clamp(current_speed.x, -max_speed, max_speed)
-		if is_on_floor():
-			play_run_animation(false)
+		play_run_animation(false)
 	elif Input.is_action_pressed("Left"):
 		current_speed.x -= accel * (2 if is_running else 1)
 		current_speed.x = clamp(current_speed.x, -max_speed, max_speed)
-		if is_on_floor():
-			play_run_animation(true)
+		play_run_animation(true)
 	else:
 		current_speed.x = lerp(current_speed.x, 0.0, friction)
 		if is_on_floor():
@@ -101,16 +108,18 @@ func handle_actions():
 	else:
 		is_ducking = false
 		
-	if Input.is_action_pressed("Reset"):
-		reset_character()
-
+	if Input.is_action_just_pressed("Reset"):
+		handle_death()
 # Play run animation
 func play_run_animation(flip_h: bool):
 	$Sprite2D.flip_h = flip_h
 	if is_running:
 		animation_speed = 16
 	$AnimationPlayer.speed_scale = animation_speed
-	
+	if not is_on_floor() and is_ducking:
+		$AnimationPlayer.stop()
+		return
+		
 	if abs(current_speed.x) > 1 and not is_ducking and last_frame_pos.x != position.x:
 		$AnimationPlayer.play("Run")
 	else:
@@ -119,9 +128,6 @@ func play_run_animation(flip_h: bool):
 func handle_death():
 	Global.PlayerLives -= 1
 	if Global.PlayerLives>0:
-		print("You died.")
-		print("You now only have "+str(Global.PlayerLives)+" lives left!")
-		reset_character()
+		get_tree().reload_current_scene()
 	else:
-		print("Game Over.")
 		get_tree().exit()
