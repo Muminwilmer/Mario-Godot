@@ -11,6 +11,7 @@ func _ready():
 	$AnimationPlayer.speed_scale = animation_speed
 	$AnimationPlayer.play("Eat")
 	spawn_location = position
+	position = Vector2(0,0)
 	self.visible = false
 
 func _physics_process(_delta):

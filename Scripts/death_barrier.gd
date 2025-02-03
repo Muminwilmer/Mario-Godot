@@ -2,4 +2,4 @@ extends Area2D
 
 func _on_body_entered(body):
 	if (body.name == "Mario"):
-		body.handle_death()
+		Global.kill_signal = true

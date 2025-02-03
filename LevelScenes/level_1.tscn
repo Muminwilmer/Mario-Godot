@@ -68,6 +68,3 @@ position = Vector2(840, 512)
 
 [node name="Zombie2" parent="." instance=ExtResource("10_sdfk3")]
 position = Vector2(872, 512)
-
-[node name="Zombie3" parent="." instance=ExtResource("10_sdfk3")]
-position = Vector2(904, 512)

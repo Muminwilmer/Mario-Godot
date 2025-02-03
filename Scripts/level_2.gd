@@ -1,30 +1,33 @@
 extends Node2D
 
-# Counter for tracking ticks
-var tick_counter = 0
+var bullet_counter = 0
 
 var bullet_scene = load("res://ResourceScenes/bullet.tscn")
 var bulletList = [
 	#{"position": Vector2(1496, 520), "delay": 0, "left": false},
 ]
 
-var pipeLoad = load("res://ResourceScenes/pipes.tscn")
-var pipeList = [
-	#{"position": Vector2(3288, 512), "destination": Vector2(-18, 416), "rotation": 90, "goto_level": "res://LevelScenes/level_2.tscn"},
+var plant_scene = load("res://ResourceScenes/plant.tscn")
+var plantList = [
+	#{"position": Vector2(560, 480), "rotation": 0},
 ]
-	
+
+var pipe_scene = load("res://ResourceScenes/pipes.tscn")
+var pipeList = [
+	#{"position": Vector2(3288, 512), "destination": Vector2(-18, 416), "rotation": 90, "goto_level": "res://LevelScenes/level_2.tscn"}, # Goto lvl 2
+]
+
 func _physics_process(_delta):
 	# Update the camera position
 	var cameraPosition = Vector2($Mario.position.x + 180, 512)
 	$Camera.position = cameraPosition
 
-	# Increment the tick counter
-	tick_counter += 1
-
-	# Check if it's time to spawn a bullet
-	if tick_counter >= 200:
+	# Increment the tick counters
+	bullet_counter += 1
+	
+	if bullet_counter >= 150:
 		spawn_bullet()
-		tick_counter = 0  # Reset the counter
+		bullet_counter = 0
 
 func spawn_bullet():
 	for bullet_data in bulletList:
@@ -38,11 +41,22 @@ func spawn_bullet():
 		
 		add_child(bullet)
 
+func spawn_plant():
+	for plant_data in plantList:
+		var plant = plant_scene.instantiate()
+		
+		plant.position = plant_data["position"]
+		
+		plant.rotation = plant_data["rotation"]
+		
+		add_child(plant)
 
 func _ready():
 	# Iterate through vectorLists to instantiate pipes
+	spawn_plant()
+	
 	for pipe_data in pipeList:
-		var NewPipe = pipeLoad.instantiate()
+		var NewPipe = pipe_scene.instantiate()
 		
 		# Set the position of the pipe
 		NewPipe.position = pipe_data["position"]

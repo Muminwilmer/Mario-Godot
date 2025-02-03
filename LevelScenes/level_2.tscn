@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://btmoyg1rg47tu"]
+[gd_scene load_steps=8 format=3 uid="uid://btmoyg1rg47tu"]
 
 [ext_resource type="TileSet" uid="uid://b77uxkw8kk10d" path="res://Assets/blockTileset.tres" id="1_n614p"]
 [ext_resource type="Script" path="res://Scripts/level_2.gd" id="1_xggbv"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://ddxn836luit04" path="res://Audio/01-Overworld_Main_Theme.mp3" id="4_021r7"]
 [ext_resource type="FontFile" uid="uid://cg543w4no6l4a" path="res://Fonts/Super Mario Bros. NES.ttf" id="5_dqhq4"]
 [ext_resource type="Script" path="res://Scripts/lives_label.gd" id="6_5eug2"]
+[ext_resource type="PackedScene" uid="uid://bsxrj38duhp8u" path="res://ResourceScenes/next_level.tscn" id="7_4klas"]
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_xggbv")
@@ -39,3 +40,13 @@ offset_bottom = 484.0
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("5_dqhq4")
 script = ExtResource("6_5eug2")
+
+[node name="nextLevel" parent="." instance=ExtResource("7_4klas")]
+position = Vector2(2088, 446)
+path_to_next_level = "res://LevelScenes/level_3.tscn"
+
+[node name="1up" parent="." instance=ExtResource("7_4klas")]
+position = Vector2(2088, 408)
+scale = Vector2(1, 0.18)
+path_to_next_level = "res://LevelScenes/level_3.tscn"
+give_life = true
