@@ -4,13 +4,13 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
 # Movement settings
-@export var walk_speed = 60.0
+@export var walk_speed = 40.0
 @export var max_fall_speed = 100.0
 
 
 var last_frame_pos = Vector2()
 var moving_left = false
-@export var animation_speed = 2
+@export var animation_speed = 4
 
 
 func _ready():
@@ -50,6 +50,7 @@ func _physics_process(_delta):
 
 func _on_die_body_entered(body):
 	if body.name == "Mario":
+		body.bounce(300, 200)
 		queue_free()
 
 func _on_attack_body_entered(body):

@@ -16,12 +16,17 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var small_jump_force = 100.0
 @export var min_jump_time = 0.3
 
+# Bounce settings
+@export var bounce_force = 250.0
+@export var small_bounce_force = 150.0
+
 # State variables
 var is_running = false
 var is_jumping = false
 var is_ducking = false
 var can_move = true
 var jump_hold_time = 0.0
+var direction = 0 # -1 Left / 1 Right
 var current_speed = Vector2(0,0)
 var respawn_position = Vector2(0,0)
 
@@ -46,44 +51,46 @@ func _physics_process(delta):
 	move_and_slide()
 
 func check_for_death():
-	if Global.kill_signal == true:
+	if Global.kill_signal or position.y > 700:
 		Global.kill_signal = false
 		handle_death()
-	if position.y > 700:
-		handle_death()
-
 
 # Gravity logic
 func handle_gravity(delta):
 	if not is_on_floor():
-		velocity.y += gravity * delta
-		velocity.y = clamp(velocity.y, -INF, max_fall_speed)
+		velocity.y = clamp(velocity.y + gravity * delta, -INF, max_fall_speed)
 
 # Movement logic
 func handle_movement(_delta):
-	if not can_move: 
+	if not can_move:
 		return
+
 	is_running = Input.is_action_pressed("Run")
 	var max_speed = max_walk_speed if not is_running else max_run_speed
-	
-	# Horizontal movement
-	if Input.is_action_pressed("Right"):
-		current_speed.x += accel * (2 if is_running else 1)
-		current_speed.x = clamp(current_speed.x, -max_speed, max_speed)
-		play_run_animation(false)
-	elif Input.is_action_pressed("Left"):
-		current_speed.x -= accel * (2 if is_running else 1)
-		current_speed.x = clamp(current_speed.x, -max_speed, max_speed)
-		play_run_animation(true)
+	var direction = Input.get_action_strength("Right") - Input.get_action_strength("Left")
+
+	# Apply acceleration and clamp speed
+	current_speed.x = clamp(current_speed.x + accel * direction * (2 if is_running else 1), -max_speed, max_speed)
+
+	# Animation handling
+	if direction != 0:
+		play_run_animation(direction < 0)
 	else:
 		current_speed.x = lerp(current_speed.x, 0.0, friction)
-		if is_on_floor():
+		if is_on_floor() and abs(current_speed.x) < 20:
 			$AnimationPlayer.stop()
-			if abs(current_speed.x) < 1:
-				$Sprite2D.frame = 0
-			
+			$Sprite2D.frame = 0
+
 	velocity.x = current_speed.x
 	last_frame_pos = position
+
+func bounce(force: float = bounce_force, no_hold_force: float = small_bounce_force):
+	is_jumping = true
+	jump_hold_time = 0.0
+	velocity.y = -force
+	$JumpAudio.play(0.1)
+
+	small_jump_force = no_hold_force
 
 # Jump logic
 func handle_jump(delta):
@@ -96,26 +103,25 @@ func handle_jump(delta):
 
 	if is_jumping:
 		jump_hold_time += delta
+
+		# Stop applying extra force if the jump button is released
 		if not Input.is_action_pressed("Jump") and jump_hold_time < min_jump_time:
 			velocity.y = -small_jump_force
 			is_jumping = false
 
 # Handle additional actions
 func handle_actions():
-	if Input.is_action_pressed("Duck"):
-		$Sprite2D.frame = 6
-		is_ducking = true
-	else:
-		is_ducking = false
-		
+	is_ducking = Input.is_action_pressed("Duck")
+	$Sprite2D.frame = 6 if is_ducking else $Sprite2D.frame
+
 	if Input.is_action_just_pressed("Reset"):
 		handle_death()
+		
 # Play run animation
 func play_run_animation(flip_h: bool):
 	$Sprite2D.flip_h = flip_h
-	if is_running:
-		animation_speed = 16
-	$AnimationPlayer.speed_scale = animation_speed
+	$AnimationPlayer.speed_scale = 16 if is_running else animation_speed
+	
 	if not is_on_floor() and is_ducking:
 		$AnimationPlayer.stop()
 		return

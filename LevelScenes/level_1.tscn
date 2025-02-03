@@ -29,6 +29,17 @@ limit_bottom = 1000
 
 [node name="Mario" parent="." instance=ExtResource("2_0lpsb")]
 position = Vector2(25, 512)
+max_walk_speed = 150.0
+max_run_speed = 300.0
+max_fall_speed = 240.0
+accel = 15.0
+friction = 0.2
+running_multiplier = 2.5
+jump_force = 350.0
+small_jump_force = 100.0
+min_jump_time = 0.3
+last_frame_pos = Vector2(0, 0)
+animation_speed = 12
 
 [node name="backgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_55x1e")
@@ -52,22 +63,16 @@ script = ExtResource("7_0uc8k")
 position = Vector2(1616, 570)
 
 [node name="Enemy" parent="." instance=ExtResource("9_u5ye8")]
-position = Vector2(320, 520)
-
-[node name="Enemy2" parent="." instance=ExtResource("9_u5ye8")]
 position = Vector2(344, 520)
 
-[node name="Enemy3" parent="." instance=ExtResource("9_u5ye8")]
+[node name="Enemy2" parent="." instance=ExtResource("9_u5ye8")]
 position = Vector2(368, 520)
 
-[node name="Enemy4" parent="." instance=ExtResource("9_u5ye8")]
+[node name="Enemy3" parent="." instance=ExtResource("9_u5ye8")]
 position = Vector2(392, 520)
+
+[node name="Enemy4" parent="." instance=ExtResource("10_sdfk3")]
+position = Vector2(904, 512)
 
 [node name="Enemy5" parent="." instance=ExtResource("10_sdfk3")]
 position = Vector2(840, 512)
-
-[node name="Enemy6" parent="." instance=ExtResource("10_sdfk3")]
-position = Vector2(872, 512)
-
-[node name="Enemy7" parent="." instance=ExtResource("10_sdfk3")]
-position = Vector2(904, 512)
