@@ -5,11 +5,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # Movement settings
 @export var max_walk_speed = 150.0
-@export var max_run_speed = 300.0
+@export var max_run_speed = 220.0
 @export var max_fall_speed = 240.0
 @export var accel = 15.0
 @export var friction = 0.2
-@export var running_multiplier = 2.5
+@export var running_multiplier = 2.0
 
 # Jump settings
 @export var jump_force = 350.0
@@ -25,6 +25,7 @@ var is_running = false
 var is_jumping = false
 var is_ducking = false
 var can_move = true
+var standing_still = false
 var jump_hold_time = 0.0
 var direction = 0 # -1 Left / 1 Right
 var current_speed = Vector2(0,0)
@@ -67,8 +68,9 @@ func handle_movement(_delta):
 
 	is_running = Input.is_action_pressed("Run")
 	var max_speed = max_walk_speed if not is_running else max_run_speed
-	var direction = Input.get_action_strength("Right") - Input.get_action_strength("Left")
-
+	direction = Input.get_action_strength("Right") - Input.get_action_strength("Left")
+	standing_still = round(last_frame_pos.x*10)/10 == round(position.x*10)/10
+	
 	# Apply acceleration and clamp speed
 	current_speed.x = clamp(current_speed.x + accel * direction * (2 if is_running else 1), -max_speed, max_speed)
 
@@ -105,8 +107,9 @@ func handle_jump(delta):
 		jump_hold_time += delta
 
 		# Stop applying extra force if the jump button is released
-		if not Input.is_action_pressed("Jump") and jump_hold_time < min_jump_time:
-			velocity.y = -small_jump_force
+		if not Input.is_action_pressed("Jump"):
+			if jump_hold_time < min_jump_time:
+				velocity.y = -small_jump_force
 			is_jumping = false
 
 # Handle additional actions
@@ -126,7 +129,7 @@ func play_run_animation(flip_h: bool):
 		$AnimationPlayer.stop()
 		return
 		
-	if abs(current_speed.x) > 1 and not is_ducking and last_frame_pos.x != position.x:
+	if abs(current_speed.x) > 1 and not is_ducking and not standing_still:
 		$AnimationPlayer.play("Run")
 	else:
 		$AnimationPlayer.stop()

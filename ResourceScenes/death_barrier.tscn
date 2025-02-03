@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwbwufuupo47s"]
 
-[ext_resource type="Script" path="res://ResourceScenes/death_barrier.gd" id="1_fl1ns"]
+[ext_resource type="Script" path="res://Scripts/death_barrier.gd" id="1_fl1ns"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yt17x"]
 size = Vector2(14, 14.5)
@@ -9,7 +9,7 @@ size = Vector2(14, 14.5)
 script = ExtResource("1_fl1ns")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(7, 1)
+scale = Vector2(13, 1)
 shape = SubResource("RectangleShape2D_yt17x")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

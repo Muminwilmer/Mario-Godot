@@ -1,22 +1,47 @@
 extends Node2D
 
+# Counter for tracking ticks
+var tick_counter = 0
+
+var bullet_scene = load("res://ResourceScenes/bullet.tscn")
+var bulletList = [
+	#{"position": Vector2(1496, 520), "delay": 0, "left": false},
+]
+
+var pipeLoad = load("res://ResourceScenes/pipes.tscn")
+var pipeList = [
+	#{"position": Vector2(3288, 512), "destination": Vector2(-18, 416), "rotation": 90, "goto_level": "res://LevelScenes/level_2.tscn"},
+]
+	
 func _physics_process(_delta):
-	#var snapping_y = 150
-	#var snapped_y_pos = int((Mario.position.y - Mario.respawn.y) / snapping_y) * snapping_y + Mario.respawn.y
-	
-	# Update the camera position to snap when Mario crosses the 200-unit threshold.
-	
+	# Update the camera position
 	var cameraPosition = Vector2($Mario.position.x + 180, 512)
 	$Camera.position = cameraPosition
-	
-	
-func _ready():
-	var pipeLoad = load("res://ResourceScenes/pipes.tscn")
-	var vectorLists = [
-	]
 
+	# Increment the tick counter
+	tick_counter += 1
+
+	# Check if it's time to spawn a bullet
+	if tick_counter >= 200:
+		spawn_bullet()
+		tick_counter = 0  # Reset the counter
+
+func spawn_bullet():
+	for bullet_data in bulletList:
+		var bullet = bullet_scene.instantiate()
+		
+		bullet.position = bullet_data["position"]
+		
+		bullet.delay = bullet_data["delay"]
+		
+		bullet.moving_left = bullet_data["left"]
+		
+		add_child(bullet)
+
+
+func _ready():
 	# Iterate through vectorLists to instantiate pipes
-	for pipe_data in vectorLists:
+	for pipe_data in pipeList:
 		var NewPipe = pipeLoad.instantiate()
 		
 		# Set the position of the pipe
@@ -32,3 +57,5 @@ func _ready():
 		
 		# Add the pipe to the scene
 		add_child(NewPipe)
+		
+

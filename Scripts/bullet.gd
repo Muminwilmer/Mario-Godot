@@ -2,30 +2,19 @@ extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-
 # Movement settings
-@export var walk_speed = 40.0
+@export var walk_speed = 80.0
 @export var max_fall_speed = 100.0
-
 
 var last_frame_pos = Vector2()
 var moving_left = false
 @export var animation_speed = 4
+var delay = 0
 
-
-func _ready():
-	$AnimationPlayer.speed_scale = animation_speed
-	
 func _physics_process(_delta):
-	$AnimationPlayer.play("Walk")
-
-	if velocity.y > max_fall_speed:
-		velocity.y = max_fall_speed
-			
 	
 	if round(last_frame_pos.x*10)/10 == round(position.x*10)/10:
-		print("hit wall")
-		moving_left = not moving_left
+		queue_free()
 		
 	if moving_left == true:
 		velocity.x = -walk_speed
@@ -42,7 +31,7 @@ func _physics_process(_delta):
 
 func _on_die_body_entered(body):
 	if body.name == "Mario":
-		body.bounce(300, 200)
+		body.bounce(400, 300)
 		queue_free()
 
 func _on_attack_body_entered(body):

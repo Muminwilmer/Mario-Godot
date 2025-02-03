@@ -1,19 +1,35 @@
-[gd_scene load_steps=9 format=3 uid="uid://40y8v6brqci1"]
+[gd_scene load_steps=10 format=3 uid="uid://2iauucl0gkm5"]
 
-[ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_8jkyg"]
-[ext_resource type="Texture2D" uid="uid://gdpbjotthruj" path="res://Assets/Enemies/Zombie_Sheet.png" id="2_8bgg7"]
+[ext_resource type="Script" path="res://Scripts/plant.gd" id="1_kjp3e"]
+[ext_resource type="Texture2D" uid="uid://bolekwa1e1vqd" path="res://Assets/Enemies/PiranhaPlantTileMap.png" id="2_agww7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6nol"]
-size = Vector2(15, 24)
+size = Vector2(16, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ffvhf"]
-size = Vector2(15, 6)
+size = Vector2(17, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7x0k"]
-size = Vector2(17, 20)
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_23gd5"]
+resource_name = "Eat"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
 
 [sub_resource type="Animation" id="Animation_k88ko"]
-length = 0.001
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -29,7 +45,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_u4hw0"]
 resource_name = "Walk"
-length = 3.0
+length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -46,34 +62,41 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oav7a"]
 _data = {
+"Eat": SubResource("Animation_23gd5"),
 "RESET": SubResource("Animation_k88ko"),
 "Walk": SubResource("Animation_u4hw0")
 }
 
-[node name="Zombie" type="CharacterBody2D"]
-script = ExtResource("1_8jkyg")
+[node name="Plant" type="CharacterBody2D"]
+script = ExtResource("1_kjp3e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_8bgg7")
-hframes = 3
+texture = ExtResource("2_agww7")
+hframes = 2
+vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 4)
+visible = false
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_q6nol")
+disabled = true
 
 [node name="Die" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Die"]
+visible = false
 modulate = Color(0.1155, 0.99, 0, 1)
-position = Vector2(-0.5, -7)
+position = Vector2(-0.5, -6.5)
 shape = SubResource("RectangleShape2D_ffvhf")
+disabled = true
 
 [node name="Attack" type="Area2D" parent="."]
 position = Vector2(0, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
 modulate = Color(1, 0, 0.0166664, 1)
-position = Vector2(-0.5, 5.5)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_e7x0k")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

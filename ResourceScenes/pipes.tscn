@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmd1p8wlf752n"]
 
-[ext_resource type="Script" path="res://pipes.gd" id="1_r5utr"]
+[ext_resource type="Script" path="res://Scripts/pipes.gd" id="1_r5utr"]
 [ext_resource type="Texture2D" uid="uid://boe17flysux2q" path="res://Assets/BigMarioSheet.png" id="2_5e5pk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pocpf"]
@@ -17,3 +17,4 @@ hframes = 7
 vframes = 2
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
