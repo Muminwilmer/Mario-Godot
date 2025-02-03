@@ -13,7 +13,8 @@ var plantList = [
 	{"position": Vector2(608, 480), "rotation": 0},
 	{"position": Vector2(656, 480), "rotation": 0},
 	{"position": Vector2(704, 480), "rotation": 0},
-	{"position": Vector2(752, 480), "rotation": 0}
+	{"position": Vector2(752, 480), "rotation": 0},
+	{"position": Vector2(1152, 480), "rotation": 0}
 ]
 
 var pipe_scene = load("res://ResourceScenes/pipes.tscn")
