@@ -13,7 +13,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # Jump settings
 @export var jump_force = 350.0
-@export var small_jump_force = 100.0
+@export var default_jump_force = 100.0
+@export var small_jump_force = default_jump_force
 @export var min_jump_time = 0.3
 
 # Bounce settings
@@ -87,6 +88,7 @@ func handle_movement(_delta):
 	last_frame_pos = position
 
 func bounce(force: float = bounce_force, no_hold_force: float = small_bounce_force):
+	print("Bounce with force: " + str(force))
 	is_jumping = true
 	jump_hold_time = 0.0
 	velocity.y = -force
@@ -105,12 +107,18 @@ func handle_jump(delta):
 
 	if is_jumping:
 		jump_hold_time += delta
-
+		print(jump_hold_time)
+		
 		# Stop applying extra force if the jump button is released
 		if not Input.is_action_pressed("Jump"):
 			if jump_hold_time < min_jump_time:
 				velocity.y = -small_jump_force
+				is_jumping = false
+			
+		if not Input.is_action_pressed("Jump") and is_on_floor():
 			is_jumping = false
+			jump_hold_time = 0.0
+			small_jump_force = default_jump_force
 
 # Handle additional actions
 func handle_actions():
