@@ -32,6 +32,8 @@ var pipeList = [
 	{"position": Vector2(3976, 512), "destination": Vector2(272, 400), "rotation": 90}, # Goto back from 1st secret
 	{"position": Vector2(3288, 512), "destination": Vector2(-18, 416), "rotation": 90, "goto_level": "res://LevelScenes/level_2.tscn"}, # Goto lvl 2
 	{"position": Vector2(4448, 512), "destination": Vector2(6288, 400), "rotation": -90},
+	{"position": Vector2(6272, 512), "destination": Vector2(4448, 488), "rotation": 90},
+	{"position": Vector2(6768, 592), "destination": Vector2(24, 512), "rotation": -90, "goto_level": "res://LevelScenes/level_3.tscn"},
 ]
 
 func _physics_process(_delta):
