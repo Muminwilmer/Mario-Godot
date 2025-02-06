@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coghhwdsdk4fr"
-path="res://.godot/imported/solid_clouds.png-f2d12979d9828568448cffed6c0f6dc3.ctex"
+uid="uid://d0nt6kodcox2e"
+path="res://.godot/imported/sky_water_tiles.png-e1b69d63eb231901a3482c3228c072bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/solid_clouds.png"
-dest_files=["res://.godot/imported/solid_clouds.png-f2d12979d9828568448cffed6c0f6dc3.ctex"]
+source_file="res://Assets/Other/sky_water_tiles.png"
+dest_files=["res://.godot/imported/sky_water_tiles.png-e1b69d63eb231901a3482c3228c072bd.ctex"]
 
 [params]
 

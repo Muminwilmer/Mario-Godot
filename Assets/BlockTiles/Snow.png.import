@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://46i07168jllg"
-path="res://.godot/imported/castle_tiles.png-770e892f6ea2c23e4666d8398753f334.ctex"
+uid="uid://2skvvr3jdhl"
+path="res://.godot/imported/Snow.png-f8b5c446936c70e6c6116896d3f99f29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/castle_tiles.png"
-dest_files=["res://.godot/imported/castle_tiles.png-770e892f6ea2c23e4666d8398753f334.ctex"]
+source_file="res://Assets/BlockTiles/Snow.png"
+dest_files=["res://.godot/imported/Snow.png-f8b5c446936c70e6c6116896d3f99f29.ctex"]
 
 [params]
 

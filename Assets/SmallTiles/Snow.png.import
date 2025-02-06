@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rjuflh7vv0gq"
-path="res://.godot/imported/OverWorldBG.png-d42af636fc1ae63bb5d49e146a31aa3a.ctex"
+uid="uid://bynvldrhpsxo2"
+path="res://.godot/imported/Snow.png-ba6b3f581ade144bf4d3fe90362ccbfe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OverWorldBG.png"
-dest_files=["res://.godot/imported/OverWorldBG.png-d42af636fc1ae63bb5d49e146a31aa3a.ctex"]
+source_file="res://Assets/SmallTiles/Snow.png"
+dest_files=["res://.godot/imported/Snow.png-ba6b3f581ade144bf4d3fe90362ccbfe.ctex"]
 
 [params]
 

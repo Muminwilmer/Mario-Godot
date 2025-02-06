@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bihn5akjjhlhp"
-path="res://.godot/imported/Invisible.png-8fa4242c08f882b4a44f48b505f92be5.ctex"
+path="res://.godot/imported/Invisible.png-d8e53e91ec89e2ad267d4cad9544cb69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Invisible.png"
-dest_files=["res://.godot/imported/Invisible.png-8fa4242c08f882b4a44f48b505f92be5.ctex"]
+source_file="res://Assets/Other/Invisible.png"
+dest_files=["res://.godot/imported/Invisible.png-d8e53e91ec89e2ad267d4cad9544cb69.ctex"]
 
 [params]
 

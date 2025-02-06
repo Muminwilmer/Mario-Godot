@@ -13,7 +13,7 @@ var delay = 0
 
 func _physics_process(_delta):
 	
-	if round(last_frame_pos.x*10)/10 == round(position.x*10)/10:
+	if last_frame_pos.x == position.x:
 		queue_free()
 		
 	if moving_left == true:
@@ -36,4 +36,4 @@ func _on_die_body_entered(body):
 
 func _on_attack_body_entered(body):
 	if body.name == "Mario":
-		Global.kill_signal = true
+		Global.kill_signal = 1

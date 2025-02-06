@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://daewpxl0pq2w5"]
+[gd_scene load_steps=13 format=3 uid="uid://daewpxl0pq2w5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_xvvq2"]
-[ext_resource type="Texture2D" uid="uid://boe17flysux2q" path="res://Assets/BigMarioSheet.png" id="2_2ahus"]
+[ext_resource type="Texture2D" uid="uid://btbqn86j6g6u4" path="res://Assets/Player/BigMarioSheet.png" id="2_5pjcr"]
+[ext_resource type="Texture2D" uid="uid://cbu4bph2rbykc" path="res://Assets/Player/SmallMarioSheet.png" id="3_c35wy"]
 [ext_resource type="AudioStream" uid="uid://b2bm2jtajo87u" path="res://Audio/Mario_Jump.mp3" id="3_ck26q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yiej1"]
 size = Vector2(14, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_785fp"]
+size = Vector2(12, 15)
 
 [sub_resource type="Animation" id="Animation_tjul0"]
 length = 0.001
@@ -21,14 +25,50 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../LargeSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../LargeSprite:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(2, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../SmallSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
 
 [sub_resource type="Animation" id="Animation_2lmbw"]
-resource_name = "Run"
+resource_name = "BigMarioRun"
 length = 3.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -38,26 +78,105 @@ tracks/0/keys = {
 "update": 1,
 "values": [3, 1, 2]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../LargeSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_smhh1"]
+resource_name = "BigMarioSwimY"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../LargeSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(2, 1), Vector2i(3, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mhajb"]
+resource_name = "BigMarioSwimX"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../LargeSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.1, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(4, 1), Vector2i(5, 1), Vector2i(6, 1), Vector2i(7, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wvjqb"]
+resource_name = "SmallMarioRun"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../SmallSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 3]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uan31"]
 _data = {
+"BigMarioRun": SubResource("Animation_2lmbw"),
+"BigMarioSwimX": SubResource("Animation_mhajb"),
+"BigMarioSwimY": SubResource("Animation_smhh1"),
 "RESET": SubResource("Animation_tjul0"),
-"Run": SubResource("Animation_2lmbw")
+"SmallMarioRun": SubResource("Animation_wvjqb")
 }
 
 [node name="Mario" type="CharacterBody2D"]
 script = ExtResource("1_xvvq2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_2ahus")
-hframes = 7
+[node name="LargeSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_5pjcr")
+hframes = 8
+vframes = 4
+frame = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="LargeHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_yiej1")
+disabled = true
+
+[node name="SmallSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_c35wy")
+hframes = 7
+vframes = 4
+frame = 1
+
+[node name="SmallHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_785fp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Sprite2D")
+root_node = NodePath("../LargeHitbox")
 libraries = {
 "": SubResource("AnimationLibrary_uan31")
 }

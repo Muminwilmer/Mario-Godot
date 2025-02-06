@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cki0x7ukmctms"
-path="res://.godot/imported/underworld_tiles.png-b8457d67f81419da29e81cdd9e908917.ctex"
+uid="uid://b35ngnv4qqefd"
+path="res://.godot/imported/SnowWorldBG.png-de79014155c357c57f20329a7e5cb339.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/underworld_tiles.png"
-dest_files=["res://.godot/imported/underworld_tiles.png-b8457d67f81419da29e81cdd9e908917.ctex"]
+source_file="res://Assets/DecorationTiles/SnowWorldBG.png"
+dest_files=["res://.godot/imported/SnowWorldBG.png-de79014155c357c57f20329a7e5cb339.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0ss4mer7kwlb"
-path="res://.godot/imported/TilesOverWorldBlocks.png-4ab5f02a3235f88ded2eee40ed99239d.ctex"
+uid="uid://bblwvby0dgvu0"
+path="res://.godot/imported/Underwater.png-0c0f9017f1053b99be1d47fd1be69462.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TilesOverWorldBlocks.png"
-dest_files=["res://.godot/imported/TilesOverWorldBlocks.png-4ab5f02a3235f88ded2eee40ed99239d.ctex"]
+source_file="res://Assets/SmallTiles/Underwater.png"
+dest_files=["res://.godot/imported/Underwater.png-0c0f9017f1053b99be1d47fd1be69462.ctex"]
 
 [params]
 

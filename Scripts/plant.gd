@@ -30,4 +30,4 @@ func _physics_process(_delta):
 
 func _on_attack_body_entered(body):
 	if body.name == "Mario":
-		Global.kill_signal = true
+		Global.kill_signal = 1

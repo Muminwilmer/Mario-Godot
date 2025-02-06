@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boe17flysux2q"
-path="res://.godot/imported/BigMarioSheet.png-e17121393e024fe02c3c4e24c84a7e69.ctex"
+uid="uid://c8gm8qothvvjs"
+path="res://.godot/imported/TilesSnowBlocks.png-136abc83d62849dc254968ad4b03fa34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/BigMarioSheet.png"
-dest_files=["res://.godot/imported/BigMarioSheet.png-e17121393e024fe02c3c4e24c84a7e69.ctex"]
+source_file="res://Assets/BlockTiles/TilesSnowBlocks.png"
+dest_files=["res://.godot/imported/TilesSnowBlocks.png-136abc83d62849dc254968ad4b03fa34.ctex"]
 
 [params]
 
