@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://cbsg7yutnbl5b" path="res://Assets/Enemies/BulletBillTileMap.png" id="2_beqe5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6nol"]
-size = Vector2(16, 12)
+size = Vector2(16, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ffvhf"]
 size = Vector2(17, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7x0k"]
-size = Vector2(17, 14)
+size = Vector2(17, 13)
 
 [sub_resource type="Animation" id="Animation_k88ko"]
 length = 0.001
@@ -58,6 +58,7 @@ texture = ExtResource("2_beqe5")
 vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_q6nol")
 
 [node name="Die" type="Area2D" parent="."]
@@ -72,7 +73,7 @@ position = Vector2(0, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
 modulate = Color(1, 0, 0.0166664, 1)
-position = Vector2(-0.5, -0.5)
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_e7x0k")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -29,11 +29,12 @@ var plantList = [
 var pipe_scene = load("res://ResourceScenes/pipes.tscn")
 var pipeList = [
 	{"position": Vector2(272, 500), "destination": Vector2(4010, 512), "rotation": 0}, # Goto 1st secret
-	{"position": Vector2(3976, 512), "destination": Vector2(272, 400), "rotation": 90}, # Goto back from 1st secret
+	{"position": Vector2(3976, 512), "destination": Vector2(272, 400), "rotation": 90}, # Go back from 1st secret
 	{"position": Vector2(3288, 512), "destination": Vector2(-18, 416), "rotation": 90, "goto_level": "res://LevelScenes/level_2.tscn"}, # Goto lvl 2
-	{"position": Vector2(4448, 512), "destination": Vector2(6288, 400), "rotation": -90},
-	{"position": Vector2(6272, 512), "destination": Vector2(4448, 488), "rotation": 90},
-	{"position": Vector2(6768, 592), "destination": Vector2(24, 512), "rotation": -90, "goto_level": "res://LevelScenes/level_3.tscn"},
+	{"position": Vector2(4448, 512), "destination": Vector2(6288, 400), "rotation": -90}, # Goto cave area
+	{"position": Vector2(6272, 512), "destination": Vector2(4448, 488), "rotation": 90}, # Go back from cave area
+	{"position": Vector2(6928, 512), "destination": Vector2(1696, 456), "rotation": 90}, # Goto after bullet jump
+	{"position": Vector2(6752, 608), "destination": Vector2(24, 512), "rotation": -90, "goto_level": "res://LevelScenes/level_3.tscn"}, # Goto lvl 3
 ]
 
 func _physics_process(_delta):

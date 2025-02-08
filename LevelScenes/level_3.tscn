@@ -42,5 +42,5 @@ theme_override_fonts/font = ExtResource("5_v5fv5")
 script = ExtResource("6_ste80")
 
 [node name="SwimArea" parent="." instance=ExtResource("7_hqlv7")]
-position = Vector2(736, 400)
-scale = Vector2(100, 50)
+position = Vector2(688, 472)
+scale = Vector2(100, 20)
