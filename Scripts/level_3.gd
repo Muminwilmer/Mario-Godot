@@ -7,6 +7,21 @@ var bulletList = [
 	
 	{"position": Vector2(648, 312), "delay": 1.2, "direction": Vector2.DOWN},
 	{"position": Vector2(680, 312), "delay": 1.2, "direction": Vector2.DOWN},
+	
+	#{"position": Vector2(2552, 568), "delay": 5, "direction": Vector2.LEFT},
+	{"position": Vector2(2552, 552), "delay": 5, "direction": Vector2.LEFT},
+	{"position": Vector2(2552, 536), "delay": 5, "direction": Vector2.LEFT},
+	#{"position": Vector2(2552, 520), "delay": 5, "direction": Vector2.LEFT},
+	#{"position": Vector2(2552, 504), "delay": 5, "direction": Vector2.LEFT},
+	#{"position": Vector2(2552, 488), "delay": 5, "direction": Vector2.LEFT},
+	{"position": Vector2(2552, 472), "delay": 5, "direction": Vector2.LEFT},
+	{"position": Vector2(2552, 456), "delay": 5, "direction": Vector2.LEFT},
+	{"position": Vector2(2552, 440), "delay": 5, "direction": Vector2.LEFT},
+	#{"position": Vector2(2552, 424), "delay": 5, "direction": Vector2.LEFT},
+	#{"position": Vector2(2552, 408), "delay": 5, "direction": Vector2.LEFT},
+	#{"position": Vector2(2552, 392), "delay": 5, "direction": Vector2.LEFT},
+	
+	{"position": Vector2(2728, 600), "delay": 1.5, "direction": Vector2.RIGHT},
 ]
 
 var plant_scene = load("res://ResourceScenes/plant.tscn")
@@ -15,6 +30,8 @@ var plantList = [
 
 var pipe_scene = load("res://ResourceScenes/pipes.tscn")
 var pipeList = [
+	{"position": Vector2(704, 304), "destination": Vector2(2224, 608), "rotation": 180},
+	{"position": Vector2(2208, 608), "destination": Vector2(704, 344), "rotation": 180},
 ]
 
 func _physics_process(_delta):
@@ -49,6 +66,7 @@ func spawn_plant():
 		add_child(plant)
 
 func _ready():
+	Global.current_level = get_tree().current_scene.scene_file_path
 	# Iterate through vectorLists to instantiate pipes
 	spawn_plant()
 	start_bullets()

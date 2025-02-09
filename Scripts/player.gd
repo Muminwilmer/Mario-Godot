@@ -35,6 +35,7 @@ var respawn_position = Vector2.ZERO
 
 @export var last_frame_pos = Vector2.ZERO
 @export var animation_speed = 12
+@export var jump_volume = -25
 
 var can_die = {"invincible": false, "duration":0, "count": 0}
 
@@ -46,6 +47,10 @@ func _ready():
 		position = Global.player_spawn_position
 		Global.player_spawn_position = null
 	respawn_position = position
+	$JumpAudio.volume_db = jump_volume
+	
+	if Global.PlayerLives < 0:
+		get_tree().quit()
 
 # --- Main Physics Logic ---
 func _physics_process(delta):
@@ -92,20 +97,21 @@ func check_for_death():
 func handle_death():
 	if not can_die["invincible"]:
 		Global.player_type -= Global.kill_signal
-		print(Global.player_type)
-		print(Global.kill_signal)
+
 		Global.kill_signal = 0
 		
 		can_die["invincible"] = true
-		can_die["duration"] = 2
+		can_die["duration"] = 1
 		can_die["count"] = 0
 		
 		if Global.player_type < 0:
 			Global.PlayerLives -= 1
 			if Global.PlayerLives > 0:
-				get_tree().reload_current_scene()
+				get_tree().change_scene_to_file("res://InterfaceScenes/death_screen.tscn")
 			else:
-				get_tree().exit()
+				get_tree().quit()
+	else:
+		Global.kill_signal = 0
 
 # --- Gravity Handling ---
 func handle_gravity(delta):

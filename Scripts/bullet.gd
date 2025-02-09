@@ -21,9 +21,9 @@ func _physics_process(_delta):
 
 	# Apply rotation for up/down movement
 	if direction.y < 0:
-		rotation = deg_to_rad(90)  # Point up
+		rotation = deg_to_rad(-90)  # Point up
 	elif direction.y > 0:
-		rotation = deg_to_rad(-90)  # Point down
+		rotation = deg_to_rad(90)  # Point down
 	else:
 		rotation = 0  # No rotation when moving horizontally
 

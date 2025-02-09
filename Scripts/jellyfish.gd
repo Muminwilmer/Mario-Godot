@@ -18,7 +18,7 @@ func _physics_process(_delta):
 	$AnimationPlayer.play("Walk")
 	
 	if round(last_frame_pos.y*10)/10 == round(position.y*10)/10:
-		await get_tree().create_timer(0.2).timeout
+		#await get_tree().create_timer(0.2).timeout
 		moving_up = not moving_up
 		
 	if moving_up == true:

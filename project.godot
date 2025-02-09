@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="Mario spel"
-run/main_scene="res://LevelScenes/level_1.tscn"
+run/main_scene="res://InterfaceScenes/start_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://Global.gd"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
 
 [input]
 

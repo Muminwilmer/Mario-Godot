@@ -68,6 +68,8 @@ func spawn_plant():
 		add_child(plant)
 
 func _ready():
+	Global.current_level = get_tree().current_scene.scene_file_path
+
 	# Iterate through vectorLists to instantiate pipes
 	spawn_plant()
 	start_bullets()
