@@ -28,7 +28,6 @@ var is_ducking = false
 var is_swimming = false
 var can_move = true
 var standing_still = false
-var player_type = 1  # 0 - Small, 1 - Big
 var jump_hold_time = 0.0
 var direction = 0  # -1 Left / 1 Right
 var current_speed = Vector2.ZERO
@@ -36,12 +35,13 @@ var respawn_position = Vector2.ZERO
 
 @export var last_frame_pos = Vector2.ZERO
 @export var animation_speed = 12
-var current_sprite = null
+
 var can_die = {"invincible": false, "duration":0, "count": 0}
 
 # --- Initialization ---
 func _ready():
-	current_sprite = $LargeSprite
+	Global.current_sprite = $LargeSprite
+	Global.player_type = 1
 	if Global.player_spawn_position:
 		position = Global.player_spawn_position
 		Global.player_spawn_position = null
@@ -69,20 +69,20 @@ func check_invincibility(delta):
 
 # --- Hide/Show the sprites ---
 func check_player_type():
-	if player_type == 1:
+	if Global.player_type == 1:
 		# Large
 		$SmallSprite.visible = false
 		$SmallHitbox.disabled = true
 		$LargeSprite.visible = true
 		$LargeHitbox.disabled = false
-		current_sprite = $LargeSprite
-	elif player_type == 0:
+		Global.current_sprite = $LargeSprite
+	elif Global.player_type == 0:
 		# Small
 		$LargeSprite.visible = false
 		$LargeHitbox.disabled = true
 		$SmallSprite.visible = true
 		$SmallHitbox.disabled = false
-		current_sprite = $SmallSprite
+		Global.current_sprite = $SmallSprite
 
 # --- Death Handling ---
 func check_for_death():
@@ -91,8 +91,8 @@ func check_for_death():
 
 func handle_death():
 	if not can_die["invincible"]:
-		player_type -= Global.kill_signal
-		print(player_type)
+		Global.player_type -= Global.kill_signal
+		print(Global.player_type)
 		print(Global.kill_signal)
 		Global.kill_signal = 0
 		
@@ -100,7 +100,7 @@ func handle_death():
 		can_die["duration"] = 2
 		can_die["count"] = 0
 		
-		if player_type < 0:
+		if Global.player_type < 0:
 			Global.PlayerLives -= 1
 			if Global.PlayerLives > 0:
 				get_tree().reload_current_scene()
@@ -158,7 +158,7 @@ func start_jump():
 	is_jumping = true
 	jump_hold_time = 0.0
 	velocity.y = -jump_force
-	current_sprite.frame = 5
+	Global.current_sprite.frame = 5
 	$JumpAudio.play(0.14)
 
 func process_jump_hold(delta):
@@ -185,10 +185,10 @@ func handle_actions():
 	if is_ducking and is_swimming:
 		velocity.y = max_walk_speed
 	else:
-		if player_type == 1:
-			current_sprite.frame = 6 if is_ducking else current_sprite.frame
-		elif player_type == 0:
-			current_sprite.frame = 0 if is_ducking else current_sprite.frame
+		if Global.player_type == 1:
+			Global.current_sprite.frame = 6 if is_ducking else Global.current_sprite.frame
+		elif Global.player_type == 0:
+			Global.current_sprite.frame = 0 if is_ducking else Global.current_sprite.frame
 
 	if Input.is_action_just_pressed("Reset"):
 		handle_death()
@@ -204,15 +204,15 @@ func handle_animation():
 		current_speed.x = lerp(current_speed.x, 0.0, friction)
 		if is_on_floor() and abs(current_speed.x) < 20:
 			$AnimationPlayer.stop()
-			current_sprite.frame = 0
+			Global.current_sprite.frame = 0
 		elif is_swimming and abs(current_speed.x) < 20:
-			if player_type == 1:
+			if Global.player_type == 1:
 				$AnimationPlayer.play("BigMarioSwimY")
 			else:
 				$AnimationPlayer.play("SmallMarioSwimY")
 
 func play_run_animation(flip_h: bool):
-	current_sprite.flip_h = flip_h
+	Global.current_sprite.flip_h = flip_h
 	$AnimationPlayer.speed_scale = 16 if is_running else animation_speed
 
 	if not is_on_floor() and is_ducking:
@@ -220,7 +220,7 @@ func play_run_animation(flip_h: bool):
 		return
 
 	if abs(current_speed.x) > 1 and not is_ducking and not standing_still:
-		if player_type == 1:
+		if Global.player_type == 1:
 			$AnimationPlayer.play("BigMarioRun")
 		else:
 			$AnimationPlayer.play("SmallMarioRun")
@@ -228,7 +228,7 @@ func play_run_animation(flip_h: bool):
 		$AnimationPlayer.stop()
 
 func play_swim_animation(flip_h: bool, direction):
-	current_sprite.flip_h = flip_h
+	Global.current_sprite.flip_h = flip_h
 	$AnimationPlayer.speed_scale = 16 if is_running else animation_speed
 
 	if is_on_floor():
@@ -236,12 +236,12 @@ func play_swim_animation(flip_h: bool, direction):
 		return
 
 	if abs(current_speed.x) > 1 and direction == "X" and not standing_still:
-		if player_type == 1:
+		if Global.player_type == 1:
 			$AnimationPlayer.play("BigMarioSwimX")
 		else:
 			$AnimationPlayer.play("SmallMarioSwimX")
 	else:
-		if player_type == 1:
+		if Global.player_type == 1:
 			$AnimationPlayer.play("BigMarioSwimY")
 		else:
 			$AnimationPlayer.play("SmallMarioSwimY")

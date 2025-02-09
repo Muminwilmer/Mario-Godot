@@ -2,18 +2,18 @@ extends Node2D
 
 var bullet_scene = load("res://ResourceScenes/bullet.tscn")
 var bulletList = [
-	{"position": Vector2(1496, 520), "delay": 2.5, "left": false},
+	{"position": Vector2(1496, 520), "delay": 2.5, "direction": Vector2.RIGHT},
 	
-	{"position": Vector2(6568, 504), "delay": 4, "left": true},
-	{"position": Vector2(6600, 504), "delay": 4, "left": false},
+	{"position": Vector2(6568, 504), "delay": 4, "direction": Vector2.LEFT},
+	{"position": Vector2(6600, 504), "delay": 4, "direction": Vector2.RIGHT},
 	
-	{"position": Vector2(6936, 376), "delay": 8, "left": true},
-	{"position": Vector2(6936, 392), "delay": 8, "left": true},
-	{"position": Vector2(6936, 408), "delay": 8, "left": true},
-	{"position": Vector2(6936, 424), "delay": 8, "left": true},
-	{"position": Vector2(6936, 440), "delay": 8, "left": true},
-	{"position": Vector2(6936, 456), "delay": 8, "left": true},
-	{"position": Vector2(6936, 472), "delay": 8, "left": true},
+	{"position": Vector2(6936, 376), "delay": 8, "direction": Vector2.LEFT},
+	{"position": Vector2(6936, 392), "delay": 8, "direction": Vector2.LEFT},
+	{"position": Vector2(6936, 408), "delay": 8, "direction": Vector2.LEFT},
+	{"position": Vector2(6936, 424), "delay": 8, "direction": Vector2.LEFT},
+	{"position": Vector2(6936, 440), "delay": 8, "direction": Vector2.LEFT},
+	{"position": Vector2(6936, 456), "delay": 8, "direction": Vector2.LEFT},
+	{"position": Vector2(6936, 472), "delay": 8, "direction": Vector2.LEFT},
 ]
 
 var plant_scene = load("res://ResourceScenes/plant.tscn")
@@ -54,7 +54,7 @@ func start_bullets():
 func _spawn_bullet(bullet_data):
 	var bullet = bullet_scene.instantiate()
 	bullet.position = bullet_data["position"]
-	bullet.moving_left = bullet_data["left"]
+	bullet.direction = bullet_data["direction"]
 	add_child(bullet)
 
 func spawn_plant():

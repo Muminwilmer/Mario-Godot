@@ -1,33 +1,34 @@
 extends CharacterBody2D
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-# Movement settings
 @export var walk_speed = 80.0
 @export var max_fall_speed = 100.0
 
 var last_frame_pos = Vector2()
-var moving_left = false
-@export var animation_speed = 4
-var delay = 0
+@export var direction: Vector2 = Vector2.RIGHT  # Default direction
 
 func _physics_process(_delta):
-	
-	if last_frame_pos.x == position.x:
+	if last_frame_pos == position:
 		queue_free()
-		
-	if moving_left == true:
-		velocity.x = -walk_speed
-		$Sprite2D.flip_h = false
-	else:
-		velocity.x = walk_speed
-		$Sprite2D.flip_h = true
-		
-	last_frame_pos = position
-		
-	move_and_slide()
-		
 
+	# Apply movement
+	velocity = direction.normalized() * walk_speed
+
+	# Flip horizontally based on direction (left or right movement)
+	if direction.x < 0:
+		$Sprite2D.flip_h = false  # Flip sprite when moving left
+	else:
+		$Sprite2D.flip_h = true  # Don't flip sprite when moving right
+
+	# Apply rotation for up/down movement
+	if direction.y < 0:
+		rotation = deg_to_rad(90)  # Point up
+	elif direction.y > 0:
+		rotation = deg_to_rad(-90)  # Point down
+	else:
+		rotation = 0  # No rotation when moving horizontally
+
+	last_frame_pos = position
+	move_and_slide()
 
 func _on_die_body_entered(body):
 	if body.name == "Mario":
