@@ -15,7 +15,7 @@ var bulletList = [
 	{"position": Vector2(6936, 456), "delay": 8, "direction": Vector2.LEFT},
 	{"position": Vector2(6936, 472), "delay": 8, "direction": Vector2.LEFT},
 ]
-
+ 
 var plant_scene = load("res://ResourceScenes/plant.tscn")
 var plantList = [
 	{"position": Vector2(560, 480), "rotation": 0},
@@ -34,7 +34,8 @@ var pipeList = [
 	{"position": Vector2(4448, 512), "destination": Vector2(6288, 400), "rotation": -90}, # Goto cave area
 	{"position": Vector2(6272, 512), "destination": Vector2(4448, 488), "rotation": 90}, # Go back from cave area
 	{"position": Vector2(6928, 512), "destination": Vector2(1696, 456), "rotation": 90}, # Goto after bullet jump
-	{"position": Vector2(6752, 608), "destination": Vector2(24, 512), "rotation": -90, "goto_level": "res://LevelScenes/level_3.tscn"}, # Goto lvl 3
+	{"position": Vector2(4976, 592), "destination": Vector2(6754, 576), "rotation": 90}, # Goto after bullet jump
+	{"position": Vector2(6772, 576), "destination": Vector2(24, 512), "rotation": -90, "goto_level": "res://LevelScenes/level_3.tscn"}, # Goto lvl 3
 ]
 
 func _physics_process(_delta):
