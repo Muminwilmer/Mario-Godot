@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=3 uid="uid://ghlets3do6kj"]
+
+[ext_resource type="Script" path="res://Scripts/mystery_box.gd" id="1_0gxra"]
+[ext_resource type="Texture2D" uid="uid://bbxcclbhwdpc8" path="res://Assets/InteractiveTiles/MysterySheet.png" id="2_pcbyd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6nol"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffvhf"]
+size = Vector2(4, 1)
+
+[sub_resource type="Animation" id="Animation_ys5k3"]
+resource_name = "Castle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_1yhkc"]
+resource_name = "Normal"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_k88ko"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wupx5"]
+resource_name = "Underwater"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oav7a"]
+_data = {
+"Castle": SubResource("Animation_ys5k3"),
+"Normal": SubResource("Animation_1yhkc"),
+"RESET": SubResource("Animation_k88ko"),
+"Underwater": SubResource("Animation_wupx5")
+}
+
+[node name="MysteryBox" type="CharacterBody2D"]
+script = ExtResource("1_0gxra")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pcbyd")
+hframes = 4
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_q6nol")
+
+[node name="Open" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Open"]
+modulate = Color(0.1155, 0.99, 0, 1)
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_ffvhf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oav7a")
+}
+speed_scale = 2.0
+
+[connection signal="body_entered" from="Open" to="." method="_on_open_body_entered"]

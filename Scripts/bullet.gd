@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 var last_frame_pos = Vector2()
 @export var direction: Vector2 = Vector2.RIGHT  # Default direction
+@export var damage = 1
 
 func _physics_process(_delta):
 	if last_frame_pos == position:
@@ -37,4 +38,4 @@ func _on_die_body_entered(body):
 
 func _on_attack_body_entered(body):
 	if body.name == "Mario":
-		Global.kill_signal = 1
+		Global.kill_signal = damage

@@ -170,7 +170,7 @@ func start_jump():
 func process_jump_hold(delta):
 	jump_hold_time += delta
 	if not Input.is_action_pressed("Jump") and jump_hold_time < min_jump_time:
-		velocity.y = -default_jump_force
+		velocity.y = -small_jump_force
 		is_jumping = false
 
 	if not Input.is_action_pressed("Jump") and is_on_floor():
@@ -183,6 +183,7 @@ func bounce(force: float = bounce_force, no_hold_force: float = small_bounce_for
 	is_jumping = true
 	jump_hold_time = 0.0
 	velocity.y = -force
+	small_jump_force = no_hold_force
 	$JumpAudio.play(0.1)
 
 # --- Action Handling ---
@@ -197,6 +198,7 @@ func handle_actions():
 			Global.current_sprite.frame = 0 if is_ducking else Global.current_sprite.frame
 
 	if Input.is_action_just_pressed("Reset"):
+		Global.player_type = -1
 		handle_death()
 
 # --- Animation Handling ---

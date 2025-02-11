@@ -15,6 +15,7 @@ var pipeList = [
 ]
 
 func _ready():
+	Global.current_level = get_tree().current_scene.scene_file_path
 	for pipe_data in pipeList:
 		var NewPipe = pipe_scene.instantiate()
 		
