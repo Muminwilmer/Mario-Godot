@@ -31,7 +31,7 @@ position = Vector2(25, 512)
 
 [node name="backgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_021r7")
-volume_db = -8.0
+volume_db = -12.0
 autoplay = true
 
 [node name="Lives" type="Label" parent="."]
@@ -59,7 +59,7 @@ position = Vector2(1098, 720)
 scale = Vector2(500, 0.18)
 script = ExtResource("9_ggjv8")
 path_to_next_level = "res://LevelScenes/level_1.tscn"
-give_life = false
-life_amount = 1
+give_life = true
+life_amount = -1
 keep_x = true
 next_level_y = 200

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhotw7klhc0q7"]
+[gd_scene load_steps=11 format=3 uid="uid://bhotw7klhc0q7"]
 
 [ext_resource type="Script" path="res://Scripts/level_3.gd" id="1_pkxdj"]
 [ext_resource type="TileSet" uid="uid://b77uxkw8kk10d" path="res://Assets/blockTileset.tres" id="2_nnxc8"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://crhvuko3yb8h6" path="res://ResourceScenes/swim_area.tscn" id="7_hqlv7"]
 [ext_resource type="PackedScene" uid="uid://g2887nfvp73d" path="res://ResourceScenes/jellyfish.tscn" id="8_7lg3j"]
 [ext_resource type="PackedScene" uid="uid://dynvjh6rwphvf" path="res://ResourceScenes/slime.tscn" id="9_uh6us"]
-[ext_resource type="PackedScene" uid="uid://40y8v6brqci1" path="res://ResourceScenes/zombie.tscn" id="10_jvjvb"]
 [ext_resource type="PackedScene" uid="uid://bsxrj38duhp8u" path="res://ResourceScenes/next_level.tscn" id="11_hh1h3"]
 
 [node name="Level3" type="Node2D"]
@@ -33,7 +32,7 @@ position = Vector2(25, 512)
 
 [node name="backgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_tdr8d")
-volume_db = -8.0
+volume_db = -12.0
 autoplay = true
 
 [node name="Lives" type="Label" parent="."]
@@ -49,59 +48,56 @@ script = ExtResource("6_ste80")
 position = Vector2(696, 472)
 scale = Vector2(100, 20)
 
-[node name="Jellyfish" parent="." instance=ExtResource("8_7lg3j")]
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Jellyfish" type="Node2D" parent="Enemies"]
+
+[node name="Jellyfish" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(888, 344)
 
-[node name="Jellyfish2" parent="." instance=ExtResource("8_7lg3j")]
+[node name="Jellyfish2" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(920, 344)
 
-[node name="Jellyfish3" parent="." instance=ExtResource("8_7lg3j")]
+[node name="Jellyfish3" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(952, 344)
 
-[node name="Slime3" parent="." instance=ExtResource("9_uh6us")]
-position = Vector2(2624, 408)
-
-[node name="Slime4" parent="." instance=ExtResource("9_uh6us")]
-position = Vector2(2672, 408)
-
-[node name="Slime5" parent="." instance=ExtResource("9_uh6us")]
-position = Vector2(2720, 408)
-
-[node name="Slime6" parent="." instance=ExtResource("9_uh6us")]
-position = Vector2(2768, 408)
-
-[node name="Slime7" parent="." instance=ExtResource("9_uh6us")]
-position = Vector2(2864, 408)
-
-[node name="Slime8" parent="." instance=ExtResource("9_uh6us")]
-position = Vector2(2816, 408)
-
-[node name="Jellyfish4" parent="." instance=ExtResource("8_7lg3j")]
+[node name="Jellyfish4" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(856, 344)
 
-[node name="Jellyfish5" parent="." instance=ExtResource("8_7lg3j")]
+[node name="Jellyfish5" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(984, 344)
 
-[node name="Jellyfish6" parent="." instance=ExtResource("8_7lg3j")]
+[node name="Jellyfish6" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(200, 432)
 
-[node name="Jellyfish7" parent="." instance=ExtResource("8_7lg3j")]
+[node name="Jellyfish7" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(504, 448)
 
-[node name="Jellyfish8" parent="." instance=ExtResource("8_7lg3j")]
+[node name="Jellyfish8" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(664, 464)
 
-[node name="Jellyfish9" parent="." instance=ExtResource("8_7lg3j")]
+[node name="Jellyfish9" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(664, 320)
 
-[node name="Zombie" parent="." instance=ExtResource("10_jvjvb")]
-position = Vector2(392, 560)
+[node name="Slime" type="Node2D" parent="Enemies"]
 
-[node name="Zombie2" parent="." instance=ExtResource("10_jvjvb")]
-position = Vector2(472, 560)
+[node name="Slime4" parent="Enemies/Slime" instance=ExtResource("9_uh6us")]
+position = Vector2(2672, 408)
 
-[node name="Zombie3" parent="." instance=ExtResource("10_jvjvb")]
-position = Vector2(432, 560)
+[node name="Slime5" parent="Enemies/Slime" instance=ExtResource("9_uh6us")]
+position = Vector2(2720, 408)
+
+[node name="Slime6" parent="Enemies/Slime" instance=ExtResource("9_uh6us")]
+position = Vector2(2768, 408)
+
+[node name="Slime8" parent="Enemies/Slime" instance=ExtResource("9_uh6us")]
+position = Vector2(2816, 408)
+
+[node name="Slime7" parent="Enemies/Slime" instance=ExtResource("9_uh6us")]
+position = Vector2(2864, 408)
+
+[node name="Slime3" parent="Enemies/Slime" instance=ExtResource("9_uh6us")]
+position = Vector2(2624, 408)
 
 [node name="nextLevel" parent="." instance=ExtResource("11_hh1h3")]
 position = Vector2(1272, 512)
