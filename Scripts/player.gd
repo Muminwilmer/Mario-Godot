@@ -110,7 +110,7 @@ func handle_death():
 		can_die["duration"] = 1
 		can_die["count"] = 0
 		
-		if Global.player_type == 0:
+		if Global.player_type < 0:
 			Global.PlayerLives -= 1
 			if Global.PlayerLives > 0:
 				get_tree().change_scene_to_file("res://InterfaceScenes/death_screen.tscn")
