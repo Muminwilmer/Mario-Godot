@@ -1,6 +1,6 @@
 extends Node2D
 
-var bullet_scene = load("res://ResourceScenes/bullet.tscn")
+var bullet_scene = load("res://ResourceScenes/Enemies/bullet.tscn")
 var bulletList = [
 	{"position": Vector2(648, 550), "delay": 1.2, "direction": Vector2.UP},
 	{"position": Vector2(680, 550), "delay": 1.2, "direction": Vector2.UP},
@@ -17,11 +17,11 @@ var bulletList = [
 	{"position": Vector2(2728, 552), "delay": 1.5, "direction": Vector2.RIGHT},
 ]
 
-var plant_scene = load("res://ResourceScenes/plant.tscn")
+var plant_scene = load("res://ResourceScenes/Enemies/plant.tscn")
 var plantList = [
 ]
 
-var pipe_scene = load("res://ResourceScenes/pipes.tscn")
+var pipe_scene = load("res://ResourceScenes/Functional/pipes.tscn")
 var pipeList = [
 	{"position": Vector2(704, 304), "destination": Vector2(2240, 560), "rotation": 180},
 	{"position": Vector2(2208, 560), "destination": Vector2(704, 344), "rotation": 180},

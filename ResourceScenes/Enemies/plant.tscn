@@ -7,7 +7,7 @@
 size = Vector2(16, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ffvhf"]
-size = Vector2(17, 1)
+size = Vector2(3, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7x0k"]
 size = Vector2(16, 16)
@@ -82,14 +82,11 @@ shape = SubResource("RectangleShape2D_q6nol")
 disabled = true
 
 [node name="Die" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Die"]
-visible = false
 modulate = Color(0.1155, 0.99, 0, 1)
-position = Vector2(-0.5, -6.5)
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_ffvhf")
-disabled = true
 
 [node name="Attack" type="Area2D" parent="."]
 position = Vector2(0, 0.5)

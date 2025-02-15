@@ -18,7 +18,6 @@ func _physics_process(_delta):
 	$AnimationPlayer.play("Walk")
 	
 	if round(last_frame_pos.y*10)/10 == round(position.y*10)/10:
-		#await get_tree().create_timer(0.2).timeout
 		moving_up = not moving_up
 		
 	if moving_up == true:
@@ -34,7 +33,6 @@ func _physics_process(_delta):
 
 func _on_die_body_entered(body):
 	if body.name == "Mario":
-		body.bounce(300, 200)
 		queue_free()
 
 func _on_attack_body_entered(body):

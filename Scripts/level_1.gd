@@ -1,6 +1,6 @@
 extends Node2D
 
-var bullet_scene = load("res://ResourceScenes/bullet.tscn")
+var bullet_scene = load("res://ResourceScenes/Enemies/bullet.tscn")
 var bulletList = [
 	{"position": Vector2(1496, 520), "delay": 2.5, "direction": Vector2.RIGHT},
 	
@@ -16,7 +16,7 @@ var bulletList = [
 	{"position": Vector2(6936, 472), "delay": 8, "direction": Vector2.LEFT},
 ]
  
-var plant_scene = load("res://ResourceScenes/plant.tscn")
+var plant_scene = load("res://ResourceScenes/Enemies/plant.tscn")
 var plantList = [
 	{"position": Vector2(560, 480), "rotation": 0},
 	{"position": Vector2(608, 480), "rotation": 0},
@@ -26,7 +26,7 @@ var plantList = [
 	{"position": Vector2(1152, 480), "rotation": 0}
 ]
 
-var pipe_scene = load("res://ResourceScenes/pipes.tscn")
+var pipe_scene = load("res://ResourceScenes/Functional/pipes.tscn")
 var pipeList = [
 	{"position": Vector2(272, 500), "destination": Vector2(4010, 512), "rotation": 0}, # Goto 1st secret
 	{"position": Vector2(3976, 512), "destination": Vector2(272, 400), "rotation": 90}, # Go back from 1st secret

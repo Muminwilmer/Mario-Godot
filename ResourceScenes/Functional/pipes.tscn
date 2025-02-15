@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmd1p8wlf752n"]
 
-[ext_resource type="Script" path="res://Scripts/pipes.gd" id="1_r5utr"]
+[ext_resource type="Script" path="res://Scripts/pipes.gd" id="1_8eoql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pocpf"]
 
 [node name="Pipes" type="Area2D"]
-script = ExtResource("1_r5utr")
+script = ExtResource("1_8eoql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pocpf")

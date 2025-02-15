@@ -2,16 +2,16 @@ extends Node2D
 
 var bullet_counter = 0
 
-var bullet_scene = load("res://ResourceScenes/bullet.tscn")
+var bullet_scene = load("res://ResourceScenes/Enemies/bullet.tscn")
 var bulletList = [
 ]
 
-var plant_scene = load("res://ResourceScenes/plant.tscn")
+var plant_scene = load("res://ResourceScenes/Enemies/plant.tscn")
 var plantList = [
 	#{"position": Vector2(560, 480), "rotation": 0},
 ]
 
-var pipe_scene = load("res://ResourceScenes/pipes.tscn")
+var pipe_scene = load("res://ResourceScenes/Functional/pipes.tscn")
 var pipeList = [
 	#{"position": Vector2(3288, 512), "destination": Vector2(-18, 416), "rotation": 90, "goto_level": "res://LevelScenes/level_2.tscn"}, # Goto lvl 2
 ]

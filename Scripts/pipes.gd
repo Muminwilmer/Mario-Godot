@@ -18,6 +18,7 @@ func _physics_process(delta):
 				get_tree().change_scene_to_file(level_path)
 			else:
 				mario.position = destination
+				await get_tree().create_timer(0.4).timeout
 				mario.can_move = true
 	
 func _on_body_entered(body):
@@ -29,4 +30,4 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if body.name == "Mario":
 		inside = false
-		mario = null
+		#mario = null

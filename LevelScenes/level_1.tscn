@@ -1,16 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://e8wkoek4ctww"]
+[gd_scene load_steps=13 format=3 uid="uid://e8wkoek4ctww"]
 
 [ext_resource type="TileSet" uid="uid://b77uxkw8kk10d" path="res://Assets/blockTileset.tres" id="1_2f1wk"]
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_wsqfs"]
 [ext_resource type="PackedScene" uid="uid://daewpxl0pq2w5" path="res://ResourceScenes/mario.tscn" id="2_0lpsb"]
 [ext_resource type="AudioStream" uid="uid://ddxn836luit04" path="res://Audio/01-Overworld_Main_Theme.mp3" id="4_55x1e"]
-[ext_resource type="PackedScene" uid="uid://bsxrj38duhp8u" path="res://ResourceScenes/next_level.tscn" id="5_xxrpc"]
+[ext_resource type="PackedScene" uid="uid://bsxrj38duhp8u" path="res://ResourceScenes/Functional/next_level.tscn" id="5_xxrpc"]
 [ext_resource type="FontFile" uid="uid://cg543w4no6l4a" path="res://Fonts/Super Mario Bros. NES.ttf" id="6_nb774"]
 [ext_resource type="Script" path="res://Scripts/lives_label.gd" id="7_0uc8k"]
-[ext_resource type="PackedScene" uid="uid://dwbwufuupo47s" path="res://ResourceScenes/death_barrier.tscn" id="8_mqf4r"]
-[ext_resource type="PackedScene" uid="uid://dynvjh6rwphvf" path="res://ResourceScenes/slime.tscn" id="9_u5ye8"]
-[ext_resource type="PackedScene" uid="uid://40y8v6brqci1" path="res://ResourceScenes/zombie.tscn" id="10_sdfk3"]
-[ext_resource type="PackedScene" uid="uid://ghlets3do6kj" path="res://ResourceScenes/mystery_box.tscn" id="11_0golk"]
+[ext_resource type="PackedScene" uid="uid://dwbwufuupo47s" path="res://ResourceScenes/Functional/death_barrier.tscn" id="8_mqf4r"]
+[ext_resource type="PackedScene" uid="uid://dynvjh6rwphvf" path="res://ResourceScenes/Enemies/slime.tscn" id="9_u5ye8"]
+[ext_resource type="PackedScene" uid="uid://40y8v6brqci1" path="res://ResourceScenes/Enemies/zombie.tscn" id="10_sdfk3"]
+[ext_resource type="PackedScene" uid="uid://ghlets3do6kj" path="res://ResourceScenes/Functional/mystery_box.tscn" id="11_0golk"]
+[ext_resource type="PackedScene" uid="uid://bqxgh52sjnqko" path="res://InterfaceScenes/hud.tscn" id="12_g27pp"]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_wsqfs")
@@ -106,3 +107,7 @@ position = Vector2(152, 488)
 [node name="DeathBarrier" parent="." instance=ExtResource("8_mqf4r")]
 position = Vector2(3416, 680)
 scale = Vector2(500, 1)
+
+[node name="HUD" parent="." instance=ExtResource("12_g27pp")]
+parent_world = "1"
+child_world = "1"

@@ -9,7 +9,7 @@ func _on_start_button_down():
 func _on_quit_button_down():
 	get_tree().quit()
 
-var pipe_scene = load("res://ResourceScenes/pipes.tscn")
+var pipe_scene = load("res://ResourceScenes/Functional/pipes.tscn")
 var pipeList = [
 	{"position": Vector2(868, 576), "destination": Vector2(932, 16), "rotation": 0}, # Goto 1st secret
 ]

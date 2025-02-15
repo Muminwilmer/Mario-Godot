@@ -1,12 +1,23 @@
-[gd_scene load_steps=15 format=3 uid="uid://daewpxl0pq2w5"]
+[gd_scene load_steps=18 format=3 uid="uid://daewpxl0pq2w5"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_xvvq2"]
 [ext_resource type="Texture2D" uid="uid://btbqn86j6g6u4" path="res://Assets/Player/BigMarioSheet.png" id="2_5pjcr"]
 [ext_resource type="Texture2D" uid="uid://cbu4bph2rbykc" path="res://Assets/Player/SmallMarioSheet.png" id="3_c35wy"]
 [ext_resource type="AudioStream" uid="uid://b2bm2jtajo87u" path="res://Audio/Mario_Jump.mp3" id="3_ck26q"]
+[ext_resource type="Shader" path="res://mario.gdshader" id="3_mphj2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lwkq1"]
+shader = ExtResource("3_mphj2")
+shader_parameter/star_timer = null
+shader_parameter/max_time = 10.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yiej1"]
 size = Vector2(14, 29)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kkjym"]
+shader = ExtResource("3_mphj2")
+shader_parameter/star_timer = null
+shader_parameter/max_time = 10.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_785fp"]
 size = Vector2(12, 15)
@@ -191,6 +202,7 @@ _data = {
 script = ExtResource("1_xvvq2")
 
 [node name="LargeSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_lwkq1")
 texture = ExtResource("2_5pjcr")
 hframes = 8
 vframes = 4
@@ -202,6 +214,7 @@ shape = SubResource("RectangleShape2D_yiej1")
 disabled = true
 
 [node name="SmallSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_kkjym")
 texture = ExtResource("3_c35wy")
 hframes = 7
 vframes = 4

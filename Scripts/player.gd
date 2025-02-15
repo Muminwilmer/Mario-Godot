@@ -26,7 +26,7 @@ var is_running = false
 var is_jumping = false
 var is_ducking = false
 var is_swimming = false
-var can_move = true
+var can_move := true
 var standing_still = false
 var jump_hold_time = 0.0
 var direction = 0  # -1 Left / 1 Right
@@ -41,11 +41,12 @@ var can_die = {"invincible": false, "duration":0, "count": 0}
 
 # --- Initialization ---
 func _ready():
-	Global.current_sprite = $LargeSprite
-	Global.player_type = 1
+	#if Global.player_type == 0:
+
 	if Global.player_spawn_position:
 		position = Global.player_spawn_position
 		Global.player_spawn_position = null
+		
 	respawn_position = position
 	$JumpAudio.volume_db = jump_volume
 	
@@ -54,9 +55,10 @@ func _ready():
 
 # --- Main Physics Logic ---
 func _physics_process(delta):
+	print(Global.player_type)
 	check_invincibility(delta)
-	check_player_type()
 	check_for_death()
+	check_player_type()
 	handle_gravity(delta)
 	handle_movement(delta)
 	handle_jump(delta)
@@ -88,6 +90,10 @@ func check_player_type():
 		$SmallSprite.visible = true
 		$SmallHitbox.disabled = false
 		Global.current_sprite = $SmallSprite
+	else:
+		print("Player type is invalid. Resetting to 0")
+		Global.player_type = 0
+		Global.current_sprite = $SmallSprite
 
 # --- Death Handling ---
 func check_for_death():
@@ -104,7 +110,7 @@ func handle_death():
 		can_die["duration"] = 1
 		can_die["count"] = 0
 		
-		if Global.player_type < 0:
+		if Global.player_type == 0:
 			Global.PlayerLives -= 1
 			if Global.PlayerLives > 0:
 				get_tree().change_scene_to_file("res://InterfaceScenes/death_screen.tscn")
@@ -115,6 +121,9 @@ func handle_death():
 
 # --- Gravity Handling ---
 func handle_gravity(delta):
+	if not can_move:
+		return
+	
 	if is_swimming:
 		velocity.y = 0
 	elif not is_on_floor():
@@ -123,6 +132,7 @@ func handle_gravity(delta):
 # --- Movement Handling ---
 func handle_movement(_delta):
 	if not can_move:
+		velocity = Vector2(0,0)
 		return
 
 	is_running = Input.is_action_pressed("Run")
@@ -141,6 +151,9 @@ func is_standing_still() -> bool:
 
 # --- Jump Handling ---
 func handle_jump(delta):
+	if not can_move:
+		return
+	
 	if is_swimming:
 		handle_swim_jump()
 	else:
@@ -253,3 +266,22 @@ func play_swim_animation(flip_h: bool, direction):
 			$AnimationPlayer.play("BigMarioSwimY")
 		else:
 			$AnimationPlayer.play("SmallMarioSwimY")
+			
+func _usedStar():
+	can_die["invincible"] = true
+	can_die["duration"] = 10
+	can_die["count"] = 0
+
+	var elapsed_time = 0.0  # Track how long the effect is active
+	var max_time = 10.0  # Star lasts 10 seconds
+	var shader_material = Global.current_sprite.material  # Get the shader material
+	
+	while elapsed_time < max_time:
+		print(can_die["duration"] - can_die["count"])
+		elapsed_time += get_process_delta_time()
+		shader_material.set_shader_parameter("star_timer", elapsed_time)
+		
+		await get_tree().process_frame  # Wait for next frame
+	
+	# Reset Mario's color when the star effect ends
+	shader_material.set_shader_parameter("star_timer", 0.0)

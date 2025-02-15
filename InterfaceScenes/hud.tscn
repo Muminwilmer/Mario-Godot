@@ -1,0 +1,135 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqxgh52sjnqko"]
+
+[ext_resource type="Script" path="res://Scripts/hud.gd" id="1_ed1bi"]
+[ext_resource type="FontFile" uid="uid://cg543w4no6l4a" path="res://Fonts/Super Mario Bros. NES.ttf" id="1_tss21"]
+[ext_resource type="Texture2D" uid="uid://cweirngx7abo4" path="res://Assets/Menu/CoinSheet.png" id="3_v3dkf"]
+
+[sub_resource type="Animation" id="Animation_g5gpq"]
+resource_name = "Coin"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_1hbat"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sht6u"]
+_data = {
+"Coin": SubResource("Animation_g5gpq"),
+"RESET": SubResource("Animation_1hbat")
+}
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_ed1bi")
+
+[node name="Mario" type="Label" parent="."]
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 188.0
+offset_bottom = 85.0
+theme_override_fonts/font = ExtResource("1_tss21")
+theme_override_font_sizes/font_size = 22
+text = "Mario"
+
+[node name="Points" type="Label" parent="."]
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 188.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("1_tss21")
+theme_override_font_sizes/font_size = 22
+text = "000000"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(336, 68)
+scale = Vector2(0.950001, 0.950001)
+texture = ExtResource("3_v3dkf")
+hframes = 3
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_sht6u")
+}
+
+[node name="Coins" type="Label" parent="."]
+offset_left = 368.0
+offset_top = 56.0
+offset_right = 464.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("1_tss21")
+theme_override_font_sizes/font_size = 22
+text = "00"
+
+[node name="X" type="Label" parent="."]
+offset_left = 352.0
+offset_top = 64.0
+offset_right = 364.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("1_tss21")
+theme_override_font_sizes/font_size = 12
+text = "x"
+
+[node name="World" type="Label" parent="."]
+offset_left = 610.0
+offset_top = 32.0
+offset_right = 735.0
+offset_bottom = 93.0
+theme_override_fonts/font = ExtResource("1_tss21")
+theme_override_font_sizes/font_size = 25
+text = "World"
+horizontal_alignment = 1
+
+[node name="WorldNum" type="Label" parent="."]
+offset_left = 610.0
+offset_top = 56.0
+offset_right = 735.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("1_tss21")
+theme_override_font_sizes/font_size = 25
+text = "1-1"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="."]
+offset_left = 864.0
+offset_top = 32.0
+offset_right = 989.0
+offset_bottom = 93.0
+theme_override_fonts/font = ExtResource("1_tss21")
+theme_override_font_sizes/font_size = 25
+text = "Time"
+horizontal_alignment = 1
+
+[node name="TimeNum" type="Label" parent="."]
+offset_left = 864.0
+offset_top = 56.0
+offset_right = 989.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("1_tss21")
+theme_override_font_sizes/font_size = 25
+text = "400
+"
+horizontal_alignment = 1
