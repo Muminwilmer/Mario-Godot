@@ -62,7 +62,8 @@ func _physics_process(delta):
 	handle_movement(delta)
 	handle_jump(delta)
 	handle_actions()
-	move_and_slide()
+	if is_inside_tree():
+		move_and_slide()
 
 # --- Invincibility Logic ---
 func check_invincibility(delta):
@@ -247,7 +248,7 @@ func play_run_animation(flip_h: bool):
 	else:
 		$AnimationPlayer.stop()
 
-func play_swim_animation(flip_h: bool, direction):
+func play_swim_animation(flip_h: bool, dir):
 	Global.current_sprite.flip_h = flip_h
 	$AnimationPlayer.speed_scale = 16 if is_running else animation_speed
 
@@ -255,7 +256,7 @@ func play_swim_animation(flip_h: bool, direction):
 		play_run_animation(flip_h)
 		return
 
-	if abs(current_speed.x) > 1 and direction == "X" and not standing_still:
+	if abs(current_speed.x) > 1 and dir == "X" and not standing_still:
 		if Global.player_type == 1:
 			$AnimationPlayer.play("BigMarioSwimX")
 		else:

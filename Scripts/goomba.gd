@@ -7,6 +7,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var walk_speed = 60.0
 @export var max_fall_speed = 100.0
 
+@export var suicidal := false
+@export var damage := 1
 
 var last_frame_pos = Vector2()
 var moving_left = false
@@ -31,7 +33,7 @@ func _physics_process(_delta):
 	if round(last_frame_pos.x*10)/10 == round(position.x*10)/10:
 		moving_left = not moving_left
 		
-	if not $OneTile.is_colliding() and not $TwoTile.is_colliding():
+	if not $OneTile.is_colliding() and not $TwoTile.is_colliding() and not suicidal:
 		moving_left = not moving_left
 		
 	if moving_left == true:
@@ -59,4 +61,4 @@ func _on_die_body_entered(body):
 
 func _on_attack_body_entered(body):
 	if body.name == "Mario":
-		Global.kill_signal = 1
+		Global.kill_signal = damage

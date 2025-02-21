@@ -61,71 +61,73 @@ scale = Vector2(1, 0.85)
 path_to_next_level = "res://LevelScenes/4-1.tscn"
 give_life = true
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="HUD" parent="." instance=ExtResource("12_dfn3p")]
+parent_world = "3"
+child_world = "1"
 
-[node name="Jellyfish" type="Node2D" parent="Enemies"]
+[node name="Extra" type="Node2D" parent="."]
 
-[node name="Jellyfish" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
+[node name="Enemies" type="Node2D" parent="Extra"]
+
+[node name="Jellyfish" type="Node2D" parent="Extra/Enemies"]
+
+[node name="Jellyfish" parent="Extra/Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(888, 344)
 
-[node name="Jellyfish2" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
+[node name="Jellyfish2" parent="Extra/Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(920, 344)
 
-[node name="Jellyfish3" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
+[node name="Jellyfish3" parent="Extra/Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(952, 344)
 
-[node name="Jellyfish4" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
+[node name="Jellyfish4" parent="Extra/Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(856, 344)
 
-[node name="Jellyfish5" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
+[node name="Jellyfish5" parent="Extra/Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(984, 344)
 
-[node name="Jellyfish6" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
+[node name="Jellyfish6" parent="Extra/Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(200, 432)
 
-[node name="Jellyfish7" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
+[node name="Jellyfish7" parent="Extra/Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(504, 448)
 
-[node name="Jellyfish8" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
+[node name="Jellyfish8" parent="Extra/Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(664, 464)
 
-[node name="Jellyfish9" parent="Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
+[node name="Jellyfish9" parent="Extra/Enemies/Jellyfish" instance=ExtResource("8_7lg3j")]
 position = Vector2(664, 320)
 
-[node name="Slime" type="Node2D" parent="Enemies"]
+[node name="Slime" type="Node2D" parent="Extra/Enemies"]
 
-[node name="Slime4" parent="Enemies/Slime" instance=ExtResource("9_uh6us")]
+[node name="Slime4" parent="Extra/Enemies/Slime" instance=ExtResource("9_uh6us")]
 position = Vector2(2672, 408)
 
-[node name="Slime5" parent="Enemies/Slime" instance=ExtResource("9_uh6us")]
+[node name="Slime5" parent="Extra/Enemies/Slime" instance=ExtResource("9_uh6us")]
 position = Vector2(2720, 408)
 
-[node name="Slime6" parent="Enemies/Slime" instance=ExtResource("9_uh6us")]
+[node name="Slime6" parent="Extra/Enemies/Slime" instance=ExtResource("9_uh6us")]
 position = Vector2(2768, 408)
 
-[node name="Slime8" parent="Enemies/Slime" instance=ExtResource("9_uh6us")]
+[node name="Slime8" parent="Extra/Enemies/Slime" instance=ExtResource("9_uh6us")]
 position = Vector2(2816, 408)
 
-[node name="Slime7" parent="Enemies/Slime" instance=ExtResource("9_uh6us")]
+[node name="Slime7" parent="Extra/Enemies/Slime" instance=ExtResource("9_uh6us")]
 position = Vector2(2864, 408)
 
-[node name="Slime3" parent="Enemies/Slime" instance=ExtResource("9_uh6us")]
+[node name="Slime3" parent="Extra/Enemies/Slime" instance=ExtResource("9_uh6us")]
 position = Vector2(2624, 408)
 
-[node name="Mystery" type="Node2D" parent="."]
+[node name="Mystery" type="Node2D" parent="Extra"]
 
-[node name="MysteryBox" parent="Mystery" instance=ExtResource("11_0ivii")]
+[node name="MysteryBox" parent="Extra/Mystery" instance=ExtResource("11_0ivii")]
 position = Vector2(72, 456)
 type = "Underwater"
 item = 1
 
-[node name="MysteryBox2" parent="Mystery" instance=ExtResource("11_0ivii")]
+[node name="MysteryBox2" parent="Extra/Mystery" instance=ExtResource("11_0ivii")]
 position = Vector2(184, 280)
 type = "Underwater"
 item = 2
 invis = true
 spawn_offset = -16
-
-[node name="HUD" parent="." instance=ExtResource("12_dfn3p")]
-parent_world = "3"
-child_world = "1"

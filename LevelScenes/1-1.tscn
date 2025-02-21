@@ -37,6 +37,15 @@ stream = ExtResource("4_r7hhq")
 volume_db = -12.0
 autoplay = true
 
+[node name="Lives" type="Label" parent="."]
+offset_left = 46.0
+offset_top = 464.0
+offset_right = 86.0
+offset_bottom = 484.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("6_eqi0f")
+script = ExtResource("7_wvmei")
+
 [node name="nextLevel" parent="." instance=ExtResource("5_ic455")]
 position = Vector2(2088, 464)
 scale = Vector2(1, 6)
@@ -48,63 +57,6 @@ scale = Vector2(1, 0.85)
 path_to_next_level = "res://LevelScenes/1-2.tscn"
 give_life = true
 
-[node name="Lives" type="Label" parent="."]
-offset_left = 46.0
-offset_top = 464.0
-offset_right = 86.0
-offset_bottom = 484.0
-scale = Vector2(0.5, 0.5)
-theme_override_fonts/font = ExtResource("6_eqi0f")
-script = ExtResource("7_wvmei")
-
-[node name="Lava" type="Node2D" parent="."]
-
-[node name="Lava1" parent="Lava" instance=ExtResource("8_c36im")]
-position = Vector2(1584, 576)
-scale = Vector2(12, 1)
-
-[node name="Lava2" parent="Lava" instance=ExtResource("8_c36im")]
-position = Vector2(4592, 544)
-scale = Vector2(38, 1)
-
-[node name="Lava3" parent="Lava" instance=ExtResource("8_c36im")]
-position = Vector2(1872, 544)
-scale = Vector2(20, 1)
-
-[node name="Enemies" type="Node2D" parent="."]
-
-[node name="Slime" type="Node2D" parent="Enemies"]
-
-[node name="Slime" parent="Enemies/Slime" instance=ExtResource("9_rvwns")]
-position = Vector2(392, 520)
-
-[node name="Slime1" parent="Enemies/Slime" instance=ExtResource("9_rvwns")]
-position = Vector2(344, 520)
-
-[node name="Slime2" parent="Enemies/Slime" instance=ExtResource("9_rvwns")]
-position = Vector2(368, 520)
-
-[node name="Zombie" type="Node2D" parent="Enemies"]
-
-[node name="Zombie1" parent="Enemies/Zombie" instance=ExtResource("10_jfnp1")]
-position = Vector2(840, 512)
-
-[node name="Zombie2" parent="Enemies/Zombie" instance=ExtResource("10_jfnp1")]
-position = Vector2(872, 512)
-
-[node name="Mystery" type="Node2D" parent="."]
-
-[node name="Mystery" parent="Mystery" instance=ExtResource("11_i6agn")]
-position = Vector2(120, 488)
-item = 1
-
-[node name="MysteryBox" parent="Mystery" instance=ExtResource("11_i6agn")]
-position = Vector2(136, 488)
-
-[node name="MysteryBox2" parent="Mystery" instance=ExtResource("11_i6agn")]
-position = Vector2(152, 488)
-item = 4
-
 [node name="DeathBarrier" parent="." instance=ExtResource("8_c36im")]
 position = Vector2(3416, 680)
 scale = Vector2(500, 1)
@@ -112,3 +64,53 @@ scale = Vector2(500, 1)
 [node name="HUD" parent="." instance=ExtResource("12_36whg")]
 parent_world = "1"
 child_world = "1"
+
+[node name="Extra" type="Node2D" parent="."]
+
+[node name="Lava" type="Node2D" parent="Extra"]
+
+[node name="Lava1" parent="Extra/Lava" instance=ExtResource("8_c36im")]
+position = Vector2(1584, 576)
+scale = Vector2(12, 1)
+
+[node name="Lava2" parent="Extra/Lava" instance=ExtResource("8_c36im")]
+position = Vector2(4592, 544)
+scale = Vector2(38, 1)
+
+[node name="Lava3" parent="Extra/Lava" instance=ExtResource("8_c36im")]
+position = Vector2(1872, 544)
+scale = Vector2(20, 1)
+
+[node name="Enemies" type="Node2D" parent="Extra"]
+
+[node name="Slime" type="Node2D" parent="Extra/Enemies"]
+
+[node name="Slime" parent="Extra/Enemies/Slime" instance=ExtResource("9_rvwns")]
+position = Vector2(392, 520)
+
+[node name="Slime1" parent="Extra/Enemies/Slime" instance=ExtResource("9_rvwns")]
+position = Vector2(344, 520)
+
+[node name="Slime2" parent="Extra/Enemies/Slime" instance=ExtResource("9_rvwns")]
+position = Vector2(368, 520)
+
+[node name="Zombie" type="Node2D" parent="Extra/Enemies"]
+
+[node name="Zombie1" parent="Extra/Enemies/Zombie" instance=ExtResource("10_jfnp1")]
+position = Vector2(840, 512)
+
+[node name="Zombie2" parent="Extra/Enemies/Zombie" instance=ExtResource("10_jfnp1")]
+position = Vector2(872, 512)
+
+[node name="Mystery" type="Node2D" parent="Extra"]
+
+[node name="Mystery" parent="Extra/Mystery" instance=ExtResource("11_i6agn")]
+position = Vector2(120, 488)
+item = 1
+
+[node name="MysteryBox" parent="Extra/Mystery" instance=ExtResource("11_i6agn")]
+position = Vector2(136, 488)
+
+[node name="MysteryBox2" parent="Extra/Mystery" instance=ExtResource("11_i6agn")]
+position = Vector2(152, 488)
+item = 4

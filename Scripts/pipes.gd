@@ -4,7 +4,7 @@ extends Area2D
 var inside = false
 var mario = null
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if mario != null:
 		if inside and mario.standing_still and mario.is_ducking:
 			mario.can_move = false
@@ -23,11 +23,9 @@ func _physics_process(delta):
 	
 func _on_body_entered(body):
 	if body.name == "Mario":
-		print("inside")
 		inside = true
 		mario = body
 
 func _on_body_exited(body):
 	if body.name == "Mario":
 		inside = false
-		#mario = null

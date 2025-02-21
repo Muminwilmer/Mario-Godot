@@ -14,15 +14,15 @@ func _on_body_entered(body):
 		
 		if give_life:
 			Global.PlayerLives += life_amount
-			print("Player gained", life_amount, "lives. Total lives:", Global.PlayerLives)
+			print("Player gained ", life_amount, " lives. Total lives: ", Global.PlayerLives)
 			
 		if life_amount >= 0:
-			Global.points += (round(Global.time/3)) * 50
+			Global.points += (round(Global.time/3.0)) * 50
 			
 		if keep_x:
 			Global.player_spawn_position = Vector2(body.position.x, next_level_y)
-			print("Setting spawn position to:", Global.player_spawn_position)
-
-		var error = get_tree().change_scene_to_file(path_to_next_level)
-		if error != OK:
-			print("Error changing scene:", error)
+			print("Setting spawn position to: ", Global.player_spawn_position)
+			
+		await get_tree().process_frame
+		if is_inside_tree():
+			get_tree().change_scene_to_file(path_to_next_level)
