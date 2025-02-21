@@ -2,11 +2,25 @@ extends CharacterBody2D
 
 @export var type := "Normal" # Castle, Normal, Underwater
 @export var item := 0 # 0 = None, 1 = Mushroom, 2 = 1up, 3 = Fire Flower, 4 = Star
-
+@export var invis := false
+@export var fakeBrick := false
+@export var spawn_offset := 16
 var used := false # Track if the block has been hit
 
 func _ready():
-	$AnimationPlayer.play(type)
+	if invis:
+		visible = false
+		
+	if fakeBrick:
+		match type:
+			"Normal":
+				$Sprite2D.frame = 4
+			"Castle":
+				$Sprite2D.frame = 9
+			"Underwater":
+				$Sprite2D.frame = 14
+	else:
+		$AnimationPlayer.play(type)
 
 func _on_open_body_entered(body):
 	if body.name == "Mario" and not used:
@@ -18,9 +32,9 @@ func _on_open_body_entered(body):
 				"Normal":
 					$Sprite2D.frame = 3
 				"Castle":
-					$Sprite2D.frame = 7
+					$Sprite2D.frame = 8
 				"Underwater":
-					$Sprite2D.frame = 11
+					$Sprite2D.frame = 13
 			
 			spawn_item()
 
@@ -34,12 +48,16 @@ func spawn_item():
 
 	if item in item_scenes:
 		var powerup = load(item_scenes[item]).instantiate()
-		powerup.position = position - Vector2(0, 16)
+		powerup.position = position - Vector2(0, spawn_offset)
 		await get_tree().process_frame
 		get_parent().add_child(powerup)
+		Global.points += 1000
 	else:
 		var coin = preload("res://ResourceScenes/PowerUps/coin.tscn").instantiate()
-		coin.position = position - Vector2(0, 16)
+		coin.position = position - Vector2(0, spawn_offset)
 		await get_tree().process_frame
 		get_parent().add_child(coin)
-
+		Global.points += 200
+		
+	if invis:
+		visible = true

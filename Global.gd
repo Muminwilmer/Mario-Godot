@@ -10,6 +10,7 @@ var current_level
 
 var coins = 0
 var points = 0
+var time = 400
 
 func _ready():
 	pass

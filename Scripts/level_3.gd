@@ -61,6 +61,8 @@ func spawn_plant():
 
 func _ready():
 	Global.current_level = get_tree().current_scene.scene_file_path
+	Global.time = 400
+	
 	# Iterate through vectorLists to instantiate pipes
 	spawn_plant()
 	start_bullets()

@@ -1,6 +1,12 @@
 extends Node2D
 
-var bullet_counter = 0
+
+# TODO
+# Add mushroom guy that says the princess is still at the first level and you're just insane
+# Go back to end of lvl 1 and see princess there
+# take meds?
+# game ends
+
 
 var bullet_scene = load("res://ResourceScenes/Enemies/bullet.tscn")
 var bulletList = [
@@ -8,12 +14,13 @@ var bulletList = [
 
 var plant_scene = load("res://ResourceScenes/Enemies/plant.tscn")
 var plantList = [
-	#{"position": Vector2(560, 480), "rotation": 0},
 ]
 
 var pipe_scene = load("res://ResourceScenes/Functional/pipes.tscn")
 var pipeList = [
-	#{"position": Vector2(3288, 512), "destination": Vector2(-18, 416), "rotation": 90, "goto_level": "res://LevelScenes/level_2.tscn"}, # Goto lvl 2
+	{"position": Vector2(2224, 528), "destination": Vector2(1360, 528), "rotation": 0}, # Goto back
+	{"position": Vector2(2272, 528), "destination": Vector2(1360, 528), "rotation": 0}, # Goto back
+	{"position": Vector2(2320, 528), "destination": Vector2(3840, 528), "rotation": 0}, # Goto forward
 ]
 
 func _physics_process(_delta):
@@ -21,24 +28,21 @@ func _physics_process(_delta):
 	var cameraPosition = Vector2($Mario.position.x + 180, 512)
 	$Camera.position = cameraPosition
 
-	# Increment the tick counters
-	bullet_counter += 1
-	
-	if bullet_counter >= 150:
-		spawn_bullet()
-		bullet_counter = 0
-
-func spawn_bullet():
+func start_bullets():
 	for bullet_data in bulletList:
-		var bullet = bullet_scene.instantiate()
-		
-		bullet.position = bullet_data["position"]
-		
-		bullet.delay = bullet_data["delay"]
-		
-		bullet.direction = bullet_data["direction"]
-		
-		add_child(bullet)
+		var bullet_timer = Timer.new()
+		bullet_timer.wait_time = bullet_data["delay"]
+		bullet_timer.one_shot = false  # Keeps repeating forever
+		bullet_timer.autostart = true  # Starts automatically
+		bullet_timer.connect("timeout", Callable(self, "_spawn_bullet").bind(bullet_data))
+		add_child(bullet_timer)
+
+func _spawn_bullet(bullet_data):
+	var bullet = bullet_scene.instantiate()
+	bullet.position = bullet_data["position"]
+	bullet.direction = bullet_data["direction"]
+	
+	add_child(bullet)
 
 func spawn_plant():
 	for plant_data in plantList:
@@ -53,9 +57,10 @@ func spawn_plant():
 func _ready():
 	Global.current_level = get_tree().current_scene.scene_file_path
 	Global.time = 400
-	
+		
 	# Iterate through vectorLists to instantiate pipes
 	spawn_plant()
+	start_bullets()
 	
 	for pipe_data in pipeList:
 		var NewPipe = pipe_scene.instantiate()

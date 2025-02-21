@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cu2fho3ysnri0" path="res://Assets/Enemies/ElectricJellyfishSheet.png" id="2_m7y5b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6nol"]
-size = Vector2(12, 14)
+size = Vector2(10, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ffvhf"]
 size = Vector2(4, 4)
@@ -51,6 +51,7 @@ _data = {
 }
 
 [node name="Jellyfish" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_16ukh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

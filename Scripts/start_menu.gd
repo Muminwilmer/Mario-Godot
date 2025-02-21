@@ -4,8 +4,10 @@ extends Control
 
 func _on_start_button_down():
 	get_tree().change_scene_to_file(ScenePath)
-
-
+	
+func _on_lvl_4_button_down():
+	get_tree().change_scene_to_file("res://LevelScenes/4-1.tscn")
+	
 func _on_quit_button_down():
 	get_tree().quit()
 

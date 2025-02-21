@@ -15,7 +15,10 @@ func _on_body_entered(body):
 		if give_life:
 			Global.PlayerLives += life_amount
 			print("Player gained", life_amount, "lives. Total lives:", Global.PlayerLives)
-
+			
+		if life_amount >= 0:
+			Global.points += (round(Global.time/3)) * 50
+			
 		if keep_x:
 			Global.player_spawn_position = Vector2(body.position.x, next_level_y)
 			print("Setting spawn position to:", Global.player_spawn_position)

@@ -15,7 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pn3yu")
-ScenePath = "res://LevelScenes/level_1.tscn"
+ScenePath = "res://LevelScenes/1-1.tscn"
 
 [node name="overWorldBlocks" type="TileMap" parent="."]
 position = Vector2(163, 80)
@@ -79,15 +79,25 @@ text = "Quit Game"
 [node name="Start" parent="." instance=ExtResource("6_l11lv")]
 position = Vector2(576, 449)
 scale = Vector2(14, 2.075)
-path_to_next_level = "res://LevelScenes/level_1.tscn"
+path_to_next_level = "res://LevelScenes/1-1.tscn"
 give_life = true
 
 [node name="Quit" parent="." instance=ExtResource("6_l11lv")]
 position = Vector2(576, 487)
 scale = Vector2(14, 2.075)
-path_to_next_level = "res://LevelScenes/level_1.tscn"
+path_to_next_level = "res://LevelScenes/1-1.tscn"
 give_life = true
 life_amount = -100
 
+[node name="lvl4" type="Button" parent="."]
+layout_mode = 2
+offset_left = 930.0
+offset_top = 349.0
+offset_right = 955.0
+offset_bottom = 362.0
+theme_override_fonts/font = ExtResource("5_7ycon")
+theme_override_font_sizes/font_size = 34
+
 [connection signal="button_down" from="VBoxContainer/Start" to="." method="_on_start_button_down"]
 [connection signal="button_down" from="VBoxContainer/Quit" to="." method="_on_quit_button_down"]
+[connection signal="button_down" from="lvl4" to="." method="_on_lvl_4_button_down"]

@@ -35,4 +35,5 @@ func _on_attack_body_entered(body):
 
 func _on_die_body_entered(body):
 	if body.name == "Mario":
+		Global.points += 200
 		queue_free()

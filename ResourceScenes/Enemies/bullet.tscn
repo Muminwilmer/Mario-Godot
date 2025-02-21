@@ -51,6 +51,7 @@ _data = {
 }
 
 [node name="Bullet" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_x3rti")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

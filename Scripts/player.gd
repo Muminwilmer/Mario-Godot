@@ -55,7 +55,6 @@ func _ready():
 
 # --- Main Physics Logic ---
 func _physics_process(delta):
-	print(Global.player_type)
 	check_invincibility(delta)
 	check_for_death()
 	check_player_type()
@@ -101,7 +100,7 @@ func check_for_death():
 		handle_death()
 
 func handle_death():
-	if not can_die["invincible"]:
+	if not can_die["invincible"] or Global.kill_signal > 1:
 		Global.player_type -= Global.kill_signal
 
 		Global.kill_signal = 0
@@ -125,7 +124,7 @@ func handle_gravity(delta):
 		return
 	
 	if is_swimming:
-		velocity.y = 0
+		velocity.y = clamp(velocity.y + gravity * delta, -INF, 10)
 	elif not is_on_floor():
 		velocity.y = clamp(velocity.y + gravity * delta, -INF, max_fall_speed)
 
@@ -277,11 +276,15 @@ func _usedStar():
 	var shader_material = Global.current_sprite.material  # Get the shader material
 	
 	while elapsed_time < max_time:
-		print(can_die["duration"] - can_die["count"])
 		elapsed_time += get_process_delta_time()
 		shader_material.set_shader_parameter("star_timer", elapsed_time)
 		
-		await get_tree().process_frame  # Wait for next frame
+		# Stops data.tree null error when changing maps
+		if is_inside_tree():
+			await get_tree().process_frame  # Wait for next frame
+		else:
+			shader_material.set_shader_parameter("star_timer", 0.0)
+			return
 	
 	# Reset Mario's color when the star effect ends
 	shader_material.set_shader_parameter("star_timer", 0.0)
