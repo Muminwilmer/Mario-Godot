@@ -15,9 +15,9 @@ func _ready():
 		match type:
 			"Normal":
 				$Sprite2D.frame = 4
-			"Castle":
-				$Sprite2D.frame = 9
 			"Underwater":
+				$Sprite2D.frame = 9
+			"Castle":
 				$Sprite2D.frame = 14
 	else:
 		$AnimationPlayer.play(type)
@@ -31,9 +31,9 @@ func _on_open_body_entered(body):
 			match type:
 				"Normal":
 					$Sprite2D.frame = 3
-				"Castle":
-					$Sprite2D.frame = 8
 				"Underwater":
+					$Sprite2D.frame = 8
+				"Castle":
 					$Sprite2D.frame = 13
 			
 			spawn_item()

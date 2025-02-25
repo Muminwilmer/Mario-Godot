@@ -24,7 +24,7 @@ layer_0/tile_data = PackedInt32Array(0, 196609, 2, 65536, 196609, 2, 131072, 196
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(264, 536)
-offset = Vector2(-50, -75)
+offset = Vector2(-48, -75)
 zoom = Vector2(2, 2)
 limit_left = 0
 limit_top = 0
@@ -81,22 +81,19 @@ position = Vector2(-16, 0)
 position = Vector2(16, 0)
 
 [node name="DestructiveTile4" parent="Extra/Tiles" instance=ExtResource("12_ld7o4")]
-position = Vector2(776, 0)
+position = Vector2(784, 0)
 
 [node name="DestructiveTile5" parent="Extra/Tiles" instance=ExtResource("12_ld7o4")]
-position = Vector2(792, 0)
+position = Vector2(800, 0)
 
 [node name="DestructiveTile6" parent="Extra/Tiles" instance=ExtResource("12_ld7o4")]
-position = Vector2(808, 0)
+position = Vector2(816, 0)
 
 [node name="DestructiveTile7" parent="Extra/Tiles" instance=ExtResource("12_ld7o4")]
-position = Vector2(824, 0)
-
-[node name="DestructiveTile8" parent="Extra/Tiles" instance=ExtResource("12_ld7o4")]
-position = Vector2(840, 0)
+position = Vector2(832, 0)
 
 [node name="DestructiveTile9" parent="Extra/Tiles" instance=ExtResource("12_ld7o4")]
-position = Vector2(856, 0)
+position = Vector2(864, 0)
 
 [node name="Lava" type="Node2D" parent="Extra"]
 
@@ -133,10 +130,17 @@ position = Vector2(216, 472)
 [node name="MysteryBox4" parent="Extra/Mystery" instance=ExtResource("11_kprmf")]
 position = Vector2(200, 408)
 
+[node name="MysteryBox5" parent="Extra/Mystery" instance=ExtResource("11_kprmf")]
+position = Vector2(1064, 472)
+item = 1
+fakeBrick = true
+
 [node name="Functional" type="Node2D" parent="Extra"]
 
 [node name="Trampoline" parent="Extra/Functional" instance=ExtResource("13_0h3d1")]
 position = Vector2(1144, 528)
+small_jump = 300
 
 [node name="Trampoline2" parent="Extra/Functional" instance=ExtResource("13_0h3d1")]
 position = Vector2(1240, 528)
+small_jump = 300

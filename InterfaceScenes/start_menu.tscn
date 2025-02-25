@@ -77,13 +77,6 @@ scale = Vector2(14, 2.075)
 path_to_next_level = "res://LevelScenes/1-1.tscn"
 give_life = true
 
-[node name="Quit" parent="." instance=ExtResource("6_l11lv")]
-position = Vector2(576, 487)
-scale = Vector2(14, 2.075)
-path_to_next_level = "res://LevelScenes/1-1.tscn"
-give_life = true
-life_amount = -100
-
 [node name="lvl4" type="Button" parent="."]
 layout_mode = 2
 offset_left = 930.0

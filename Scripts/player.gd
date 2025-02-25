@@ -12,7 +12,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var running_multiplier = 2.0
 
 # --- Jump Settings ---
-@export var jump_force = 350.0
+@export var jump_force = 400.0
 var small_jump_force = 0
 @export var default_jump_force = 100.0
 @export var min_jump_time = 0.3
@@ -182,7 +182,8 @@ func start_jump():
 
 func process_jump_hold(delta):
 	jump_hold_time += delta
-	if not Input.is_action_pressed("Jump") and jump_hold_time < min_jump_time:
+
+	if not Input.is_action_pressed("Jump") and jump_hold_time < min_jump_time and jump_hold_time > 0.1:
 		velocity.y = -small_jump_force
 		is_jumping = false
 
@@ -190,14 +191,15 @@ func process_jump_hold(delta):
 		is_jumping = false
 		jump_hold_time = 0.0
 		small_jump_force = default_jump_force
-				
+
 # --- Bounce Handling ---
 func bounce(force: float = bounce_force, no_hold_force: float = small_bounce_force):
 	is_jumping = true
 	jump_hold_time = 0.0
 	velocity.y = -force
 	small_jump_force = no_hold_force
-	$JumpAudio.play(0.1)
+	$JumpAudio.play(0.14)
+
 
 # --- Action Handling ---
 func handle_actions():

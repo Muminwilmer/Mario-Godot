@@ -28,5 +28,5 @@ modulate = Color(0.1155, 0.99, 0, 1)
 position = Vector2(0, 8.5)
 shape = SubResource("RectangleShape2D_ffvhf")
 
-[connection signal="body_entered" from="Destroy" to="." method="_on_destroy_body_entered"]
 [connection signal="body_entered" from="Destroy" to="." method="_on_open_body_entered"]
+[connection signal="body_entered" from="Destroy" to="." method="_on_destroy_body_entered"]
