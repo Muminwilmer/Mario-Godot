@@ -60,5 +60,6 @@ func _on_die_body_entered(body):
 		queue_free()
 
 func _on_attack_body_entered(body):
+	print(body.name)
 	if body.name == "Mario":
 		Global.kill_signal = damage
