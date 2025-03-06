@@ -32,10 +32,8 @@ func _physics_process(_delta):
 
 
 func _on_die_body_entered(body):
-	if body.name == "Mario":
-		Global.points += 100
-		queue_free()
+	Global.points += 100
+	queue_free()
 
 func _on_attack_body_entered(body):
-	if body.name == "Mario":
-		Global.kill_signal = 1
+	Global.kill_signal = 1

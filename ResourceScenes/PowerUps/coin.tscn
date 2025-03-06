@@ -44,6 +44,7 @@ _data = {
 }
 
 [node name="Coin" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_lvh7f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

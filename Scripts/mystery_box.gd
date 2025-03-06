@@ -23,7 +23,7 @@ func _ready():
 		$AnimationPlayer.play(type)
 
 func _on_open_body_entered(body):
-	if body.name == "Mario" and not used:
+	if not used:
 		if body.is_jumping or type == "Underwater" and body.is_swimming:
 			used = true
 			$AnimationPlayer.stop()

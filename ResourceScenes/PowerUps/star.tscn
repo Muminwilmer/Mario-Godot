@@ -48,6 +48,7 @@ _data = {
 }
 
 [node name="Star" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_4klhp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -59,6 +60,8 @@ position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_q6nol")
 
 [node name="Consume" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Consume"]
 modulate = Color(0.1155, 0.99, 0, 1)

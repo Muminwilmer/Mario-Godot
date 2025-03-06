@@ -61,6 +61,14 @@ Run={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Map"
+2d_physics/layer_2="Mario"
+2d_physics/layer_3="Powerup"
+2d_physics/layer_4="Enemy"
+2d_physics/layer_5="Other"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

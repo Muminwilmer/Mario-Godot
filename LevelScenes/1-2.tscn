@@ -102,7 +102,7 @@ position = Vector2(864, 0)
 [node name="Goomba" type="Node2D" parent="Extra/Enemies"]
 
 [node name="Goomba" parent="Extra/Enemies/Goomba" instance=ExtResource("11_gk4ug")]
-position = Vector2(352, 520)
+position = Vector2(324, 519)
 
 [node name="Goomba2" parent="Extra/Enemies/Goomba" instance=ExtResource("11_gk4ug")]
 position = Vector2(616, 520)

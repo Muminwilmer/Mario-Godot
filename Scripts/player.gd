@@ -25,7 +25,7 @@ var small_jump_force = 0
 var is_running = false
 var is_jumping = false
 var is_ducking = false
-var is_swimming = false
+@export var is_swimming = false
 var can_move := true
 var standing_still = false
 var jump_hold_time = 0.0
@@ -182,7 +182,7 @@ func start_jump():
 
 func process_jump_hold(delta):
 	jump_hold_time += delta
-
+	
 	if not Input.is_action_pressed("Jump") and jump_hold_time < min_jump_time and jump_hold_time > 0.1:
 		velocity.y = -small_jump_force
 		is_jumping = false

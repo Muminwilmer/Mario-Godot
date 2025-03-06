@@ -68,7 +68,7 @@ _data = {
 }
 
 [node name="Plant" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 8
 script = ExtResource("1_kjp3e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -83,6 +83,8 @@ shape = SubResource("RectangleShape2D_q6nol")
 disabled = true
 
 [node name="Die" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Die"]
 modulate = Color(0.1155, 0.99, 0, 1)
@@ -91,6 +93,8 @@ shape = SubResource("RectangleShape2D_ffvhf")
 
 [node name="Attack" type="Area2D" parent="."]
 position = Vector2(0, 0.5)
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
 modulate = Color(1, 0, 0.0166664, 1)
