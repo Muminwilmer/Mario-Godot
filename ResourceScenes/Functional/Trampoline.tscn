@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b23xdm4i5cw50"]
 
-[ext_resource type="Script" path="res://Scripts/Trampoline.gd" id="1_4cyqd"]
+[ext_resource type="Script" uid="uid://cf0xp2rg8ejru" path="res://Scripts/Trampoline.gd" id="1_4cyqd"]
 [ext_resource type="Texture2D" uid="uid://b365v5tsrfmoj" path="res://Assets/InteractiveTiles/Trampoline.png" id="2_sdcii"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6nol"]
@@ -42,8 +42,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8wqq4"]
 _data = {
-"Bounce": SubResource("Animation_bnioi"),
-"RESET": SubResource("Animation_f8e4b")
+&"Bounce": SubResource("Animation_bnioi"),
+&"RESET": SubResource("Animation_f8e4b")
 }
 
 [node name="Trampoline" type="CharacterBody2D"]
@@ -71,7 +71,7 @@ shape = SubResource("RectangleShape2D_kp5l3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_8wqq4")
+&"": SubResource("AnimationLibrary_8wqq4")
 }
 
 [connection signal="body_entered" from="Bounce" to="." method="_on_bounce_body_entered"]

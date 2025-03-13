@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bdpngvkxukuqh"]
 
-[ext_resource type="Script" path="res://Scripts/destructive_tile.gd" id="1_1c03s"]
+[ext_resource type="Script" uid="uid://c6sv6ckgkw0lu" path="res://Scripts/destructive_tile.gd" id="1_1c03s"]
 [ext_resource type="Texture2D" uid="uid://d2gp4eqsynwk8" path="res://Assets/InteractiveTiles/BlockTilesSheet.png" id="2_f6e16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6nol"]
@@ -30,5 +30,5 @@ modulate = Color(0.1155, 0.99, 0, 1)
 position = Vector2(0, 8.5)
 shape = SubResource("RectangleShape2D_ffvhf")
 
-[connection signal="body_entered" from="Destroy" to="." method="_on_open_body_entered"]
 [connection signal="body_entered" from="Destroy" to="." method="_on_destroy_body_entered"]
+[connection signal="body_entered" from="Destroy" to="." method="_on_open_body_entered"]

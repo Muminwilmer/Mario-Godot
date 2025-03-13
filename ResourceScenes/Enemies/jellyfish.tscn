@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://g2887nfvp73d"]
 
-[ext_resource type="Script" path="res://Scripts/jellyfish.gd" id="1_16ukh"]
+[ext_resource type="Script" uid="uid://bn0un60c57op1" path="res://Scripts/jellyfish.gd" id="1_16ukh"]
 [ext_resource type="Texture2D" uid="uid://cu2fho3ysnri0" path="res://Assets/Enemies/ElectricJellyfishSheet.png" id="2_m7y5b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6nol"]
@@ -46,8 +46,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oav7a"]
 _data = {
-"RESET": SubResource("Animation_k88ko"),
-"Walk": SubResource("Animation_u4hw0")
+&"RESET": SubResource("Animation_k88ko"),
+&"Walk": SubResource("Animation_u4hw0")
 }
 
 [node name="Jellyfish" type="CharacterBody2D"]
@@ -82,7 +82,7 @@ shape = SubResource("RectangleShape2D_e7x0k")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_oav7a")
+&"": SubResource("AnimationLibrary_oav7a")
 }
 speed_scale = 2.0
 

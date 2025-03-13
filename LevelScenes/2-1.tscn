@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://btmoyg1rg47tu"]
 
-[ext_resource type="Script" path="res://Scripts/level_2.gd" id="1_i2xev"]
+[ext_resource type="Script" uid="uid://cgopx5div8u6w" path="res://Scripts/level_2.gd" id="1_i2xev"]
 [ext_resource type="TileSet" uid="uid://b77uxkw8kk10d" path="res://Assets/blockTileset.tres" id="2_cgvnb"]
 [ext_resource type="PackedScene" uid="uid://daewpxl0pq2w5" path="res://ResourceScenes/mario.tscn" id="3_rk5tg"]
 [ext_resource type="AudioStream" uid="uid://ddxn836luit04" path="res://Audio/01-Overworld_Main_Theme.mp3" id="4_fbchb"]
 [ext_resource type="FontFile" uid="uid://cg543w4no6l4a" path="res://Fonts/Super Mario Bros. NES.ttf" id="5_kcs6s"]
-[ext_resource type="Script" path="res://Scripts/lives_label.gd" id="6_pbxb4"]
+[ext_resource type="Script" uid="uid://bqrsfe5a3isih" path="res://Scripts/lives_label.gd" id="6_pbxb4"]
 [ext_resource type="PackedScene" uid="uid://bsxrj38duhp8u" path="res://ResourceScenes/Functional/next_level.tscn" id="7_ywdfc"]
 [ext_resource type="PackedScene" uid="uid://dwbwufuupo47s" path="res://ResourceScenes/Functional/death_barrier.tscn" id="8_5x0jl"]
-[ext_resource type="Script" path="res://Scripts/next_level.gd" id="9_btbfg"]
+[ext_resource type="Script" uid="uid://dhdb5b7yn0sto" path="res://Scripts/next_level.gd" id="9_btbfg"]
 [ext_resource type="PackedScene" uid="uid://bqxgh52sjnqko" path="res://InterfaceScenes/hud.tscn" id="10_b3d3h"]
 [ext_resource type="PackedScene" uid="uid://d2x5ldesxg3oa" path="res://ResourceScenes/Functional/platform.tscn" id="11_7aa15"]
 

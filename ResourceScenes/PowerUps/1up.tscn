@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://81l1rr4pscg0"]
 
-[ext_resource type="Script" path="res://Scripts/1up.gd" id="1_6rmrf"]
+[ext_resource type="Script" uid="uid://w3qt20upso43" path="res://Scripts/1up.gd" id="1_6rmrf"]
 [ext_resource type="Texture2D" uid="uid://wot1d0w0ai0v" path="res://Assets/Powerups/1up.png" id="2_bltru"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6nol"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://2iauucl0gkm5"]
 
-[ext_resource type="Script" path="res://Scripts/plant.gd" id="1_kjp3e"]
+[ext_resource type="Script" uid="uid://0m8132d2l070" path="res://Scripts/plant.gd" id="1_kjp3e"]
 [ext_resource type="Texture2D" uid="uid://bolekwa1e1vqd" path="res://Assets/Enemies/PiranhaPlantTileMap.png" id="2_agww7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6nol"]
@@ -62,9 +62,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oav7a"]
 _data = {
-"Eat": SubResource("Animation_23gd5"),
-"RESET": SubResource("Animation_k88ko"),
-"Walk": SubResource("Animation_u4hw0")
+&"Eat": SubResource("Animation_23gd5"),
+&"RESET": SubResource("Animation_k88ko"),
+&"Walk": SubResource("Animation_u4hw0")
 }
 
 [node name="Plant" type="CharacterBody2D"]
@@ -103,7 +103,7 @@ shape = SubResource("RectangleShape2D_e7x0k")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_oav7a")
+&"": SubResource("AnimationLibrary_oav7a")
 }
 speed_scale = 2.0
 

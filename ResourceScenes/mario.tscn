@@ -1,14 +1,14 @@
 [gd_scene load_steps=18 format=3 uid="uid://daewpxl0pq2w5"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_xvvq2"]
+[ext_resource type="Script" uid="uid://bv3s33s5jw4y5" path="res://Scripts/player.gd" id="1_xvvq2"]
 [ext_resource type="Texture2D" uid="uid://btbqn86j6g6u4" path="res://Assets/Player/BigMarioSheet.png" id="2_5pjcr"]
 [ext_resource type="Texture2D" uid="uid://cbu4bph2rbykc" path="res://Assets/Player/SmallMarioSheet.png" id="3_c35wy"]
 [ext_resource type="AudioStream" uid="uid://b2bm2jtajo87u" path="res://Audio/Mario_Jump.mp3" id="3_ck26q"]
-[ext_resource type="Shader" path="res://mario.gdshader" id="3_mphj2"]
+[ext_resource type="Shader" uid="uid://bxdw4la5hgb7u" path="res://mario.gdshader" id="3_mphj2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lwkq1"]
 shader = ExtResource("3_mphj2")
-shader_parameter/star_timer = null
+shader_parameter/star_timer = 0.0
 shader_parameter/max_time = 10.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yiej1"]
@@ -16,7 +16,7 @@ size = Vector2(14, 29)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kkjym"]
 shader = ExtResource("3_mphj2")
-shader_parameter/star_timer = null
+shader_parameter/star_timer = 0.0
 shader_parameter/max_time = 10.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_785fp"]
@@ -189,13 +189,13 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uan31"]
 _data = {
-"BigMarioRun": SubResource("Animation_2lmbw"),
-"BigMarioSwimX": SubResource("Animation_mhajb"),
-"BigMarioSwimY": SubResource("Animation_smhh1"),
-"RESET": SubResource("Animation_tjul0"),
-"SmallMarioRun": SubResource("Animation_wvjqb"),
-"SmallMarioSwimX": SubResource("Animation_j5a53"),
-"SmallMarioSwimY": SubResource("Animation_noopx")
+&"BigMarioRun": SubResource("Animation_2lmbw"),
+&"BigMarioSwimX": SubResource("Animation_mhajb"),
+&"BigMarioSwimY": SubResource("Animation_smhh1"),
+&"RESET": SubResource("Animation_tjul0"),
+&"SmallMarioRun": SubResource("Animation_wvjqb"),
+&"SmallMarioSwimX": SubResource("Animation_j5a53"),
+&"SmallMarioSwimY": SubResource("Animation_noopx")
 }
 
 [node name="Mario" type="CharacterBody2D"]
@@ -228,7 +228,7 @@ shape = SubResource("RectangleShape2D_785fp")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../LargeHitbox")
 libraries = {
-"": SubResource("AnimationLibrary_uan31")
+&"": SubResource("AnimationLibrary_uan31")
 }
 speed_scale = 2.0
 

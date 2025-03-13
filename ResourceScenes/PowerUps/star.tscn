@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://crqarla8dh2t1"]
 
-[ext_resource type="Script" path="res://Scripts/star.gd" id="1_4klhp"]
+[ext_resource type="Script" uid="uid://bicvl2bu3fvj3" path="res://Scripts/star.gd" id="1_4klhp"]
 [ext_resource type="Texture2D" uid="uid://djg2qq1qvv561" path="res://Assets/Powerups/Stars.png" id="2_jawb4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6nol"]
@@ -43,8 +43,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4wp1j"]
 _data = {
-"RESET": SubResource("Animation_py0cg"),
-"Walking": SubResource("Animation_s8qx5")
+&"RESET": SubResource("Animation_py0cg"),
+&"Walking": SubResource("Animation_s8qx5")
 }
 
 [node name="Star" type="CharacterBody2D"]
@@ -70,7 +70,7 @@ shape = SubResource("RectangleShape2D_ffvhf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_4wp1j")
+&"": SubResource("AnimationLibrary_4wp1j")
 }
 
 [connection signal="body_entered" from="Consume" to="." method="_on_die_body_entered"]

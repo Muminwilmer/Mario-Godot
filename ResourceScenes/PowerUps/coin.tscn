@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d1pavw75okmne"]
 
-[ext_resource type="Script" path="res://Scripts/coin.gd" id="1_lvh7f"]
+[ext_resource type="Script" uid="uid://bsstcbqlu05m3" path="res://Scripts/coin.gd" id="1_lvh7f"]
 [ext_resource type="Texture2D" uid="uid://2jucnj48787d" path="res://Assets/Powerups/CoinAnimationSheet.png" id="2_y7nno"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6nol"]
@@ -39,8 +39,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2pjdu"]
 _data = {
-"Consume": SubResource("Animation_snqg6"),
-"RESET": SubResource("Animation_f5l3d")
+&"Consume": SubResource("Animation_snqg6"),
+&"RESET": SubResource("Animation_f5l3d")
 }
 
 [node name="Coin" type="CharacterBody2D"]
@@ -58,5 +58,5 @@ shape = SubResource("RectangleShape2D_q6nol")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_2pjdu")
+&"": SubResource("AnimationLibrary_2pjdu")
 }

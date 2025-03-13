@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmd1p8wlf752n"]
 
-[ext_resource type="Script" path="res://Scripts/pipes.gd" id="1_8eoql"]
+[ext_resource type="Script" uid="uid://df50acfscw7gl" path="res://Scripts/pipes.gd" id="1_8eoql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pocpf"]
 

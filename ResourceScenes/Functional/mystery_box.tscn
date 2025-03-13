@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://ghlets3do6kj"]
 
-[ext_resource type="Script" path="res://Scripts/mystery_box.gd" id="1_0gxra"]
+[ext_resource type="Script" uid="uid://bvy56kfmddklj" path="res://Scripts/mystery_box.gd" id="1_0gxra"]
 [ext_resource type="Texture2D" uid="uid://bbxcclbhwdpc8" path="res://Assets/InteractiveTiles/MysterySheet.png" id="2_pcbyd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6nol"]
@@ -77,10 +77,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oav7a"]
 _data = {
-"Castle": SubResource("Animation_ys5k3"),
-"Normal": SubResource("Animation_1yhkc"),
-"RESET": SubResource("Animation_k88ko"),
-"Underwater": SubResource("Animation_wupx5")
+&"Castle": SubResource("Animation_ys5k3"),
+&"Normal": SubResource("Animation_1yhkc"),
+&"RESET": SubResource("Animation_k88ko"),
+&"Underwater": SubResource("Animation_wupx5")
 }
 
 [node name="MysteryBox" type="CharacterBody2D"]
@@ -106,7 +106,7 @@ shape = SubResource("RectangleShape2D_ffvhf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_oav7a")
+&"": SubResource("AnimationLibrary_oav7a")
 }
 speed_scale = 2.0
 

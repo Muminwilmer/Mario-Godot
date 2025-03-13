@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://p2murxbvx4ty"]
 
 [ext_resource type="TileSet" uid="uid://b77uxkw8kk10d" path="res://Assets/blockTileset.tres" id="1_dersv"]
-[ext_resource type="Script" path="res://Scripts/start_menu.gd" id="1_pn3yu"]
+[ext_resource type="Script" uid="uid://boyj0xpniihq6" path="res://Scripts/start_menu.gd" id="1_pn3yu"]
 [ext_resource type="Texture2D" uid="uid://cgpdg0kxtcmev" path="res://Assets/Menu/Super_Mario_Bros_Logo.png" id="2_3otxj"]
 [ext_resource type="PackedScene" uid="uid://daewpxl0pq2w5" path="res://ResourceScenes/mario.tscn" id="3_ot02h"]
 [ext_resource type="FontFile" uid="uid://bmjy60q8jhog4" path="res://Fonts/NESCyrillic.ttf" id="5_7ycon"]
