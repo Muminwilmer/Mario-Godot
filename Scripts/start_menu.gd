@@ -4,6 +4,8 @@ extends Control
 
 func _on_start_button_down():
 	get_tree().change_scene_to_file(ScenePath)
+	if Global.PlayerLives < 3:
+		Global.PlayerLives = 3
 	
 func _on_lvl_4_button_down():
 	get_tree().change_scene_to_file("res://LevelScenes/4-1.tscn")

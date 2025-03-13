@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://dy8j3gpy55cfn"]
+[gd_scene load_steps=4 format=3 uid="uid://dy8j3gpy55cfn"]
+
+[ext_resource type="Script" uid="uid://d1dsag1hf12xo" path="res://Scripts/gameover.gd" id="1_7lbax"]
+[ext_resource type="FontFile" uid="uid://bmjy60q8jhog4" path="res://Fonts/NESCyrillic.ttf" id="1_m4cfh"]
+[ext_resource type="Texture2D" uid="uid://dc628o52rdqg1" path="res://Assets/Menu/DeadMario.png" id="2_5h6up"]
 
 [node name="Gameover" type="Control"]
 layout_mode = 3
@@ -7,3 +11,46 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7lbax")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 192.0
+offset_right = 813.0
+offset_bottom = 266.0
+theme_override_fonts/font = ExtResource("1_m4cfh")
+theme_override_font_sizes/font_size = 100
+text = "Game Over!"
+
+[node name="DeadMario" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 384.0
+offset_right = 552.0
+offset_bottom = 448.0
+texture = ExtResource("2_5h6up")
+
+[node name="Lives" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 576.0
+offset_top = 384.0
+offset_right = -536.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_m4cfh")
+theme_override_font_sizes/font_size = 80
+text = "0"

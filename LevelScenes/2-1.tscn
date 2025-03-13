@@ -76,4 +76,3 @@ child_world = "1"
 
 [node name="Platform" parent="Extra/Platform" instance=ExtResource("11_7aa15")]
 position = Vector2(856, 592)
-distance = 100

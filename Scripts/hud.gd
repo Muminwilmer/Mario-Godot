@@ -17,4 +17,4 @@ func _process(delta):
 	if round(Global.time) < 0:
 		Global.kill_signal = 2
 	else:
-		$TimeNum.text = str(round(Global.time))
+		$TimeNum.text = str(int(Global.time))

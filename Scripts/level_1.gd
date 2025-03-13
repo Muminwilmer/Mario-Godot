@@ -93,4 +93,3 @@ func _ready():
 		# Add the pipe to the scene
 		add_child(NewPipe)
 		
-

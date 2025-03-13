@@ -115,7 +115,7 @@ func handle_death():
 			if Global.PlayerLives > 0:
 				get_tree().change_scene_to_file("res://InterfaceScenes/death_screen.tscn")
 			else:
-				get_tree().quit()
+				get_tree().change_scene_to_file("res://InterfaceScenes/gameover.tscn")
 	else:
 		Global.kill_signal = 0
 

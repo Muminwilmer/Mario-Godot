@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://fb4xo7kv7cxh"]
 
-[ext_resource type="Script" path="res://Scripts/death_screen.gd" id="1_0vjph"]
+[ext_resource type="Script" uid="uid://cbyccqifqeg70" path="res://Scripts/death_screen.gd" id="1_0vjph"]
 [ext_resource type="Texture2D" uid="uid://dc628o52rdqg1" path="res://Assets/Menu/DeadMario.png" id="1_qqk14"]
 [ext_resource type="FontFile" uid="uid://bmjy60q8jhog4" path="res://Fonts/NESCyrillic.ttf" id="2_54wtf"]
 

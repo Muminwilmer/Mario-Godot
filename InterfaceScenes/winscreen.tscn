@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=3 uid="uid://brk8j5gw20tb"]
+
+[ext_resource type="Script" uid="uid://cwfpuebyyqxdo" path="res://Scripts/winscreen.gd" id="1_c2eh5"]
+[ext_resource type="FontFile" uid="uid://bmjy60q8jhog4" path="res://Fonts/NESCyrillic.ttf" id="2_5cs5e"]
+[ext_resource type="Texture2D" uid="uid://dc628o52rdqg1" path="res://Assets/Menu/DeadMario.png" id="3_c2eh5"]
+[ext_resource type="FontFile" uid="uid://cg543w4no6l4a" path="res://Fonts/Super Mario Bros. NES.ttf" id="4_04cvw"]
+[ext_resource type="Texture2D" uid="uid://cweirngx7abo4" path="res://Assets/Menu/CoinSheet.png" id="5_10uk1"]
+
+[node name="Win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c2eh5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 200.0
+offset_right = 755.0
+offset_bottom = 274.0
+theme_override_fonts/font = ExtResource("2_5cs5e")
+theme_override_font_sizes/font_size = 100
+text = "You won!"
+
+[node name="DeadMario" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 384.0
+offset_right = 552.0
+offset_bottom = 448.0
+texture = ExtResource("3_c2eh5")
+
+[node name="Lives" type="Label" parent="DeadMario"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_right = 88.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_5cs5e")
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[node name="Points" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -9.91667
+anchor_top = 0.80975
+anchor_right = -9.91667
+anchor_bottom = 0.80975
+offset_left = 11680.0
+offset_top = -132.718
+offset_right = 11812.0
+offset_bottom = -79.7179
+theme_override_fonts/font = ExtResource("4_04cvw")
+theme_override_font_sizes/font_size = 22
+text = "Points
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(760, 416)
+scale = Vector2(2, 2)
+texture = ExtResource("5_10uk1")
+hframes = 3
+vframes = 4
+
+[node name="X" type="Label" parent="Sprite2D"]
+anchors_preset = -1
+anchor_left = -10.0
+anchor_top = 0.404349
+anchor_right = -10.0
+anchor_bottom = 0.404349
+offset_left = 216.842
+offset_top = -15.5323
+offset_right = 228.842
+offset_bottom = -1.53227
+theme_override_fonts/font = ExtResource("4_04cvw")
+theme_override_font_sizes/font_size = 12
+text = "x"
+metadata/_edit_use_anchors_ = true
+
+[node name="Coins" type="Label" parent="Sprite2D"]
+anchors_preset = -1
+anchor_left = -10.0
+anchor_top = 0.404349
+anchor_right = -10.0
+anchor_bottom = 0.404349
+offset_left = 233.684
+offset_top = -23.9533
+offset_right = 329.684
+offset_bottom = 25.0467
+theme_override_fonts/font = ExtResource("4_04cvw")
+theme_override_font_sizes/font_size = 22
+text = "00"
+metadata/_edit_use_anchors_ = true
